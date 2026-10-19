@@ -11,14 +11,28 @@
 <meta property="og:description" content="Mentions légales de l'élevage De la Maison des p'tits loups.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="assets/img/ui/partage.jpg">
+<meta property="og:image" content="https://maison-ptits-loups-maquette.vercel.app/assets/img/ui/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/ui/favicon-48.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/ui/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="assets/fonts/intertight-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/intertight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
-<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');var v=null;try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}if(v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('is-calm')</script>
+<link rel="modulepreload" href="assets/js/main.js">
+<link rel="modulepreload" href="assets/js/core.js">
+<link rel="modulepreload" href="assets/vendor/lenis/lenis.js">
+<link rel="modulepreload" href="assets/js/fx/snow.js">
+<link rel="modulepreload" href="assets/js/fx/frost.js">
+<link rel="modulepreload" href="assets/vendor/lenis/animate.js">
+<link rel="modulepreload" href="assets/vendor/lenis/dimensions.js">
+<link rel="modulepreload" href="assets/vendor/lenis/emitter.js">
+<link rel="modulepreload" href="assets/vendor/lenis/maths.js">
+<link rel="modulepreload" href="assets/vendor/lenis/virtual-scroll.js">
+<link rel="modulepreload" href="assets/vendor/lenis/debounce.js">
+<script>(function(){var d=document.documentElement,v=null,ss=null;d.classList.remove('no-js');d.classList.add('js');try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}try{ss=sessionStorage}catch(e){}var calm=v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches);if(calm){d.classList.add('is-calm');return}var tr=false;try{tr=!!ss&&ss.getItem('ptits-loups-transition')==='1'}catch(e){}if(tr)d.classList.add('from-transition');else if(false){var seen=false;try{seen=!!ss&&ss.getItem('ptits-loups-intro')==='1'}catch(e){}if(!seen)d.classList.add('play-intro')}})();</script>
 </head>
 <body data-page="mentions">
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -52,7 +66,7 @@
     </div>
   </div>
 </header>
-<div class="menu" id="menu" data-menu aria-hidden="true">
+<div class="menu" id="menu" data-menu aria-hidden="true" data-lenis-prevent>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap">
     <nav class="menu__links" aria-label="Menu"><a href="index.html">Accueil</a><a href="chiens.html">Nos chiens</a><a href="portees.html">Portées & chiots</a><a href="adopter.html">Adopter</a><a href="contact.html">Contact</a></nav>
@@ -65,18 +79,18 @@
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap"><div class="phero__text">
     <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Mentions légales</span></nav>
-    <h1 class="phero__title" id="titre-mentions" data-hero-title><span class="line">Mentions</span><span class="line"><em>légales</em></span></h1>
+    <h1 class="phero__title" id="titre-mentions" data-hero-title><span class="line">Mentions</span> <span class="line"><em>légales</em></span></h1>
   </div></div>
 </section>
 <section class="section" data-tone="dark">
   <div class="wrap">
     <div class="legal-page">
-      <section><h2>Éditeur du site</h2><p>Élevage De la Maison des p'tits loups<br>1 rue de la Croix Poquet, 91650 Breuillet, France<br>Téléphone : 07 85 20 67 30<br>E-mail : delamaisondesptitsloups@hotmail.com</p><p>SIRET : 902 928 332 00011 · SIREN : 902 928 332</p><p>Responsable de la publication : <span class="todo">à compléter</span></p></section>
-      <section><h2>Activité d'élevage</h2><ul><li>Éleveuse professionnelle déclarée, titulaire de l'ACACED (attestation de connaissances pour les animaux de compagnie d'espèces domestiques).</li><li>Numéro de déclaration d'activité : <span class="todo">à compléter</span></li><li>Code APE : <span class="todo">à compléter</span></li><li>Chaque annonce de cession indique le numéro SIREN, l'âge des chiots, leur inscription ou non au LOF, le numéro d'identification de la mère et le nombre de chiots de la portée.</li></ul></section>
+      <section><h2>Éditeur du site</h2><p>Élevage De la Maison des p'tits loups<br>1 rue de la Croix Poquet, 91650 Breuillet, France<br>Téléphone : 07 85 20 67 30<br>E-mail : delamaisondesptitsloups@hotmail.com</p><p>SIRET : 902 928 332 00011 · SIREN : 902 928 332</p><p>Responsable de la publication : <span class="todo">à compléter</span></p></section>
+      <section><h2>Activité d'élevage</h2><ul><li>Éleveuse professionnelle déclarée, titulaire de l'ACACED (attestation de connaissances pour les animaux de compagnie d'espèces domestiques).</li><li>Numéro de déclaration d'activité : <span class="todo">à compléter</span></li><li>Code APE : <span class="todo">à compléter</span></li><li>Chaque annonce de cession indique le numéro SIREN, l'âge des chiots, leur inscription ou non au LOF, le numéro d'identification de la mère et le nombre de chiots de la portée.</li></ul></section>
       <section><h2>Hébergement</h2><p>Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. <span class="todo">à vérifier à la mise en ligne</span></p></section>
-      <section id="donnees"><h2>Données personnelles</h2><p>Les informations saisies dans les formulaires servent uniquement à répondre à votre demande. Elles ne sont ni vendues ni transmises à des tiers.</p><p>Durée de conservation : <span class="todo">à compléter</span></p><p>Vous pouvez accéder à vos données, les rectifier ou demander leur effacement en écrivant à delamaisondesptitsloups@hotmail.com. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p></section>
-      <section><h2>Cookies</h2><p>Ce site n'utilise pas de cookies de mesure d'audience ni de publicité. Seule votre préférence « Mode calme » est gardée dans votre navigateur.</p></section>
-      <section><h2>Crédits</h2><p>Photographies : © Élevage De la Maison des p'tits loups. Visuels d'ambiance (paysages, décors) : images générées par intelligence artificielle ; aucun chien représenté sur le site n'est généré.</p></section>
+      <section id="donnees"><h2>Données personnelles</h2><p>Les informations saisies dans les formulaires servent uniquement à répondre à votre demande. Elles ne sont ni vendues ni transmises à des tiers.</p><p>Durée de conservation : <span class="todo">à compléter</span></p><p>Vous pouvez accéder à vos données, les rectifier ou demander leur effacement en écrivant à delamaisondesptitsloups@hotmail.com. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p></section>
+      <section><h2>Cookies</h2><p>Ce site n'utilise pas de cookies de mesure d'audience ni de publicité. Seule votre préférence « Mode calme » est gardée dans votre navigateur.</p></section>
+      <section><h2>Crédits</h2><p>Photographies : © Élevage De la Maison des p'tits loups. Visuels d'ambiance (paysages, décors) : images générées par intelligence artificielle ; aucun chien représenté sur le site n'est généré.</p></section>
     </div>
   </div>
 </section>

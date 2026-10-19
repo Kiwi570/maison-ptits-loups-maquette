@@ -21,6 +21,9 @@ export function initSnow(canvas) {
   window.addEventListener('pointermove', (e) => { pointer.x = e.clientX; pointer.y = e.clientY; }, { passive: true });
   window.addEventListener('pointerdown', (e) => { pointer.x = e.clientX; pointer.y = e.clientY; }, { passive: true });
   document.addEventListener('pointerleave', () => { pointer.x = pointer.y = -9999; });
+  const release = (e) => { if (e.pointerType !== 'mouse') { pointer.x = pointer.y = -9999; } };
+  window.addEventListener('pointerup', release, { passive: true });
+  window.addEventListener('pointercancel', release, { passive: true });
   let lastY = window.scrollY, sv = 0;
   const R = 130;
   window.gsap.ticker.add(() => {

@@ -54,6 +54,4 @@ export default async function portees(core) {
   initConstellation($('[data-sky]'), { calm: core.calm });
   core.bind(document);
 
-  const hash = location.hash.slice(1);
-  if (hash && document.getElementById(hash)) setTimeout(() => core.scrollTo(`#${CSS.escape(hash)}`, -100), core.calm ? 0 : 1100);
 }

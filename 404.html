@@ -11,14 +11,28 @@
 <meta property="og:description" content="Cette page n'existe pas.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="assets/img/ui/partage.jpg">
+<meta property="og:image" content="https://maison-ptits-loups-maquette.vercel.app/assets/img/ui/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex">
-<link rel="icon" href="assets/img/ui/favicon-48.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/img/ui/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="assets/fonts/intertight-var.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="assets/css/main.css">
-<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');var v=null;try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}if(v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('is-calm')</script>
+<link rel="icon" href="/assets/img/ui/favicon-48.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/ui/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/intertight-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="modulepreload" href="/assets/js/main.js">
+<link rel="modulepreload" href="/assets/js/core.js">
+<link rel="modulepreload" href="/assets/vendor/lenis/lenis.js">
+<link rel="modulepreload" href="/assets/js/fx/snow.js">
+<link rel="modulepreload" href="/assets/js/fx/frost.js">
+<link rel="modulepreload" href="/assets/vendor/lenis/animate.js">
+<link rel="modulepreload" href="/assets/vendor/lenis/dimensions.js">
+<link rel="modulepreload" href="/assets/vendor/lenis/emitter.js">
+<link rel="modulepreload" href="/assets/vendor/lenis/maths.js">
+<link rel="modulepreload" href="/assets/vendor/lenis/virtual-scroll.js">
+<link rel="modulepreload" href="/assets/vendor/lenis/debounce.js">
+<script>(function(){var d=document.documentElement,v=null,ss=null;d.classList.remove('no-js');d.classList.add('js');try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}try{ss=sessionStorage}catch(e){}var calm=v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches);if(calm){d.classList.add('is-calm');return}var tr=false;try{tr=!!ss&&ss.getItem('ptits-loups-transition')==='1'}catch(e){}if(tr)d.classList.add('from-transition');else if(false){var seen=false;try{seen=!!ss&&ss.getItem('ptits-loups-intro')==='1'}catch(e){}if(!seen)d.classList.add('play-intro')}})();</script>
 </head>
 <body data-page="notfound">
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -40,11 +54,11 @@
 </svg>
 <header class="header" data-header>
   <div class="wrap header__inner">
-    <a class="brand" href="index.html" aria-label="La Maison des p'tits loups, accueil">
-      <img src="assets/img/photos/logo-medaille-128.webp" width="42" height="42" alt="">
+    <a class="brand" href="/" aria-label="La Maison des p'tits loups, accueil">
+      <img src="/assets/img/photos/logo-medaille-128.webp" width="42" height="42" alt="">
       <span class="brand__name">La Maison des p'tits loups<small>Élevage · Husky Sibérien</small></span>
     </a>
-    <nav class="nav" aria-label="Navigation principale"><a href="chiens.html">Nos chiens</a><a href="portees.html">Portées & chiots</a><a href="adopter.html">Adopter</a><a href="contact.html">Contact</a></nav>
+    <nav class="nav" aria-label="Navigation principale"><a href="/chiens">Nos chiens</a><a href="/portees">Portées & chiots</a><a href="/adopter">Adopter</a><a href="/contact">Contact</a></nav>
     <div class="header__tools">
       <a class="header__phone" href="tel:+33785206730">07 85 20 67 30</a>
       <button class="calm-btn" type="button" data-calm-toggle aria-pressed="false" title="Réduire les animations"><svg aria-hidden="true" focusable="false"><use href="#i-calm"></use></svg><span class="calm-btn__text">Mode calme</span></button>
@@ -52,21 +66,21 @@
     </div>
   </div>
 </header>
-<div class="menu" id="menu" data-menu aria-hidden="true">
+<div class="menu" id="menu" data-menu aria-hidden="true" data-lenis-prevent>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap">
-    <nav class="menu__links" aria-label="Menu"><a href="index.html">Accueil</a><a href="chiens.html">Nos chiens</a><a href="portees.html">Portées & chiots</a><a href="adopter.html">Adopter</a><a href="contact.html">Contact</a></nav>
+    <nav class="menu__links" aria-label="Menu"><a href="/">Accueil</a><a href="/chiens">Nos chiens</a><a href="/portees">Portées & chiots</a><a href="/adopter">Adopter</a><a href="/contact">Contact</a></nav>
     <div class="menu__foot"><a href="tel:+33785206730" class="big-contact">07 85 20 67 30</a><span>1 rue de la Croix Poquet, 91650 Breuillet</span></div>
   </div>
 </div>
 <main id="contenu">
-<section class="phero" data-aurora data-tone="dark"><div class="bg"><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/accueil-ouverture-9x16.webp"><img src="assets/img/grok/accueil-ouverture-16x9-1280.webp" srcset="assets/img/grok/accueil-ouverture-16x9-1280.webp 1280w, assets/img/grok/accueil-ouverture-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="accueil-ouverture-16x9"></picture></div><div class="aurora-slot" data-aurora-slot></div><div class="wrap"><div class="phero__text"><h1 class="phero__title" data-hero-title><span class="line">Perdu</span><span class="line">dans la <em>neige ?</em></span></h1><p class="lead">Cette page n'existe pas ou a été déplacée.</p><div class="row"><a class="btn" href="index.html">Retour à l'accueil<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a></div></div></div></section>
+<section class="phero" data-aurora data-tone="dark"><div class="bg"><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="/assets/img/grok/accueil-ouverture-9x16-720.webp 720w, /assets/img/grok/accueil-ouverture-9x16.webp 1080w" sizes="100vw"><img src="/assets/img/grok/accueil-ouverture-16x9-1280.webp" srcset="/assets/img/grok/accueil-ouverture-16x9-1280.webp 1280w, /assets/img/grok/accueil-ouverture-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="accueil-ouverture-16x9"></picture></div><div class="aurora-slot" data-aurora-slot></div><div class="wrap"><div class="phero__text"><h1 class="phero__title" data-hero-title><span class="line">Perdu</span> <span class="line">dans la <em>neige ?</em></span></h1><p class="lead">Cette page n'existe pas ou a été déplacée.</p><div class="row"><a class="btn" href="/">Retour à l'accueil<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a></div></div></div></section>
 </main>
 <footer class="footer" data-tone="dark">
   <div class="wrap">
     <div class="footer__grid">
       <div class="footer__brand">
-        <img src="assets/img/photos/logo-medaille-256.webp" width="84" height="84" alt="Logo de l'élevage De la Maison des p'tits loups">
+        <img src="/assets/img/photos/logo-medaille-256.webp" width="84" height="84" alt="Logo de l'élevage De la Maison des p'tits loups">
         <p>Élevage familial de Husky Sibérien à Breuillet, dans l'Essonne. Plus qu'un métier, une passion.</p>
         <div class="socials">
           <a href="https://www.facebook.com/LaMaisondesptitsloups1/" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-fb"></use></svg>Facebook</a>
@@ -74,29 +88,29 @@
           <a href="https://www.tiktok.com/@lamaisondesptitsloups" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-tt"></use></svg>TikTok</a>
         </div>
       </div>
-      <div><h3>Le site</h3><ul><li><a class="link" href="index.html">Accueil</a></li><li><a class="link" href="chiens.html">Nos chiens</a></li><li><a class="link" href="portees.html">Portées &amp; chiots</a></li><li><a class="link" href="adopter.html">Adopter</a></li><li><a class="link" href="contact.html">Contact</a></li></ul></div>
+      <div><h3>Le site</h3><ul><li><a class="link" href="/">Accueil</a></li><li><a class="link" href="/chiens">Nos chiens</a></li><li><a class="link" href="/portees">Portées &amp; chiots</a></li><li><a class="link" href="/adopter">Adopter</a></li><li><a class="link" href="/contact">Contact</a></li></ul></div>
       <div><h3>Nous joindre</h3><ul><li><a class="link tabnum" href="tel:+33785206730">07 85 20 67 30</a></li><li><a class="link" href="mailto:delamaisondesptitsloups@hotmail.com" >delamaisondesptitsloups<wbr>@hotmail.com</a></li></ul></div>
       <div><h3>Adresse</h3><address>1 rue de la Croix Poquet<br>91650 Breuillet<br>France</address></div>
     </div>
     <div class="footer__giant" aria-hidden="true" data-giant>p'tits loups</div>
     <div class="footer__bottom">
       <span>© <span data-year>2026</span> Élevage De la Maison des p'tits loups · SIREN 902 928 332</span>
-      <div class="row"><a class="link" href="mentions-legales.html">Mentions légales</a><button class="link" type="button" data-calm-toggle aria-pressed="false">Mode calme</button><span class="demo-tag">Maquette de démonstration</span></div>
+      <div class="row"><a class="link" href="/mentions-legales">Mentions légales</a><button class="link" type="button" data-calm-toggle aria-pressed="false">Mode calme</button><span class="demo-tag">Maquette de démonstration</span></div>
     </div>
   </div>
 </footer>
 <nav class="actionbar" data-actionbar aria-label="Actions rapides">
   <a href="tel:+33785206730"><svg aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg>Appeler</a>
-  <a href="contact.html#ecrire"><svg aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>Écrire</a>
-  <a href="portees.html"><svg aria-hidden="true" focusable="false"><use href="#i-paw"></use></svg>Chiots</a>
+  <a href="/contact#ecrire"><svg aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>Écrire</a>
+  <a href="/portees"><svg aria-hidden="true" focusable="false"><use href="#i-paw"></use></svg>Chiots</a>
 </nav>
 <canvas class="snow" data-snow aria-hidden="true"></canvas>
 <div class="cursor" data-cursor aria-hidden="true"><div class="cursor__ring"><span class="cursor__label">Essuyer</span></div><div class="cursor__dot"></div></div>
-<div class="curtain" data-curtain aria-hidden="true"><div class="curtain__panel"><div class="curtain__frost"></div><img class="curtain__logo" src="assets/img/photos/logo-medaille-128.webp" alt=""></div></div>
-<script src="assets/vendor/gsap/gsap.min.js"></script>
-<script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
-<script src="assets/vendor/gsap/SplitText.min.js"></script>
-<script type="module" src="assets/js/main.js"></script>
+<div class="curtain" data-curtain aria-hidden="true"><div class="curtain__panel"><div class="curtain__frost"></div><img class="curtain__logo" src="/assets/img/photos/logo-medaille-128.webp" alt=""></div></div>
+<script src="/assets/vendor/gsap/gsap.min.js"></script>
+<script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/gsap/SplitText.min.js"></script>
+<script type="module" src="/assets/js/main.js"></script>
 <noscript><style>.intro{display:none}</style></noscript>
 </body>
 </html>

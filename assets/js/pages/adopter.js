@@ -1,5 +1,5 @@
 /* Adopter : traces de pattes, questionnaire, candidature en quatre étapes (démonstration). */
-import { PORTEES, chien, statutPortee, dateLongue } from '../data.js';
+import { PORTEES, chien, statutPortee, dateLongue, prix } from '../data.js';
 import { initPaws } from '../fx/paws.js';
 import { esc } from '../render.js';
 import { $, $$ } from '../core.js';
@@ -8,6 +8,9 @@ import { validate } from './forms.js';
 const { gsap } = window;
 
 export default async function adopter(core) {
+  // chiffres de la FAQ repris du fichier de données
+  $$('[data-faq-prix]').forEach((el) => { const p = PORTEES.find((x) => x.id === el.dataset.faqPrix); if (p?.prix) el.textContent = prix(p.prix); });
+  $$('[data-faq-depart]').forEach((el) => { const p = PORTEES.find((x) => x.id === el.dataset.faqDepart); if (p?.depart) el.textContent = dateLongue(p.depart).replace(/ \d{4}$/, ''); });
   initPaws($('[data-journey]'), { calm: core.calm });
   quiz(core);
   wizard(core);
@@ -63,6 +66,8 @@ function wizard(core) {
     if (!core.calm) gsap.from(steps[i], { opacity: 0, x: 30, duration: 0.6, ease: 'expo.out' });
     const top = form.getBoundingClientRect().top;
     if (top < 0) core.scrollTo(form, -100);
+    const first = steps[i].querySelector('input:not([type=hidden]), select, textarea, button');
+    (first || steps[i]).focus({ preventScroll: true });
   };
   const recap = () => {
     const fd = new FormData(form);

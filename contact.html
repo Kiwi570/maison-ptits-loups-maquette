@@ -11,14 +11,30 @@
 <meta property="og:description" content="Téléphone, e-mail, adresse et accès de l'élevage à Breuillet (Essonne).">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="assets/img/ui/partage.jpg">
+<meta property="og:image" content="https://maison-ptits-loups-maquette.vercel.app/assets/img/ui/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/ui/favicon-48.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/ui/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="assets/fonts/intertight-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/intertight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
-<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');var v=null;try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}if(v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('is-calm')</script>
+<link rel="modulepreload" href="assets/js/main.js">
+<link rel="modulepreload" href="assets/js/pages/contact.js">
+<link rel="modulepreload" href="assets/js/core.js">
+<link rel="modulepreload" href="assets/js/pages/forms.js">
+<link rel="modulepreload" href="assets/vendor/lenis/lenis.js">
+<link rel="modulepreload" href="assets/js/fx/snow.js">
+<link rel="modulepreload" href="assets/js/fx/frost.js">
+<link rel="modulepreload" href="assets/vendor/lenis/animate.js">
+<link rel="modulepreload" href="assets/vendor/lenis/dimensions.js">
+<link rel="modulepreload" href="assets/vendor/lenis/emitter.js">
+<link rel="modulepreload" href="assets/vendor/lenis/maths.js">
+<link rel="modulepreload" href="assets/vendor/lenis/virtual-scroll.js">
+<link rel="modulepreload" href="assets/vendor/lenis/debounce.js">
+<script>(function(){var d=document.documentElement,v=null,ss=null;d.classList.remove('no-js');d.classList.add('js');try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}try{ss=sessionStorage}catch(e){}var calm=v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches);if(calm){d.classList.add('is-calm');return}var tr=false;try{tr=!!ss&&ss.getItem('ptits-loups-transition')==='1'}catch(e){}if(tr)d.classList.add('from-transition');else if(false){var seen=false;try{seen=!!ss&&ss.getItem('ptits-loups-intro')==='1'}catch(e){}if(!seen)d.classList.add('play-intro')}})();</script>
 </head>
 <body data-page="contact">
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -52,7 +68,7 @@
     </div>
   </div>
 </header>
-<div class="menu" id="menu" data-menu aria-hidden="true">
+<div class="menu" id="menu" data-menu aria-hidden="true" data-lenis-prevent>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap">
     <nav class="menu__links" aria-label="Menu"><a href="index.html">Accueil</a><a href="chiens.html">Nos chiens</a><a href="portees.html">Portées & chiots</a><a href="adopter.html">Adopter</a><a href="contact.html" aria-current="page">Contact</a></nav>
@@ -61,17 +77,17 @@
 </div>
 <main id="contenu">
 <section class="phero" data-aurora data-tone="dark" aria-labelledby="titre-contact">
-  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/contact-ouverture-village-9x16.webp"><img src="assets/img/grok/contact-ouverture-village-16x9-1280.webp" srcset="assets/img/grok/contact-ouverture-village-16x9-1280.webp 1280w, assets/img/grok/contact-ouverture-village-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="contact-ouverture-village-16x9"></picture></div>
+  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/contact-ouverture-village-9x16-720.webp 720w, assets/img/grok/contact-ouverture-village-9x16.webp 1080w" sizes="100vw"><img src="assets/img/grok/contact-ouverture-village-16x9-1280.webp" srcset="assets/img/grok/contact-ouverture-village-16x9-1280.webp 1280w, assets/img/grok/contact-ouverture-village-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="contact-ouverture-village-16x9"></picture></div>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap"><div class="phero__grid">
     <div class="phero__text">
       <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Contact</span></nav>
-      <h1 class="phero__title" id="titre-contact" data-hero-title><span class="line">Venez</span><span class="line"><em>nous voir</em></span></h1>
+      <h1 class="phero__title" id="titre-contact" data-hero-title><span class="line">Venez</span> <span class="line"><em>nous voir</em></span></h1>
       <p class="lead" data-hero-fade>N'hésitez pas à nous contacter pour toute question, ou si vous souhaitez nous parler d'un chien en particulier.</p>
     </div>
     <div class="contact-quick" data-hero-fade>
-      <span class="label">Le plus simple : appelez-nous</span>
-      <div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
+      <span class="label">Le plus simple : appelez-nous</span>
+      <div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30" aria-label="Copier le numéro de téléphone"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
       <div class="row"><a class="btn btn--small" data-magnetic href="#ecrire">Écrire un message<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a></div>
     </div>
   </div></div>
@@ -80,12 +96,12 @@
 <section class="section" id="coordonnees" data-tone="dark">
   <div class="wrap contact-grid">
     <div class="coord">
-      <div class="coord__item" data-reveal><span class="label">Téléphone</span><div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div></div>
-      <div class="coord__item" data-reveal><span class="label">E-mail</span><div class="row"><a class="big-contact big-contact--mail" href="mailto:delamaisondesptitsloups@hotmail.com">delamaisondesptitsloups<wbr>@hotmail.com</a><button class="copy" type="button" data-copy="delamaisondesptitsloups@hotmail.com"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div></div>
-      <div class="coord__item" data-reveal><span class="label">Adresse</span><address>1 rue de la Croix Poquet<br>91650 Breuillet, France</address><span class="todo" style="width:fit-content">Visites sur rendez-vous : horaires à compléter</span></div>
+      <div class="coord__item" data-reveal><span class="label">Téléphone</span><div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30" aria-label="Copier le numéro de téléphone"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div></div>
+      <div class="coord__item" data-reveal><span class="label">E-mail</span><div class="row"><a class="big-contact big-contact--mail" href="mailto:delamaisondesptitsloups@hotmail.com">delamaisondesptitsloups<wbr>@hotmail.com</a><button class="copy" type="button" data-copy="delamaisondesptitsloups@hotmail.com" aria-label="Copier l'adresse e-mail"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div></div>
+      <div class="coord__item" data-reveal><span class="label">Adresse</span><address>1 rue de la Croix Poquet<br>91650 Breuillet, France</address><span class="todo" style="width:fit-content">Modalités et horaires de visite : à compléter</span></div>
       <div class="coord__item" data-reveal><span class="label">Réseaux</span><div class="socials"><a href="https://www.facebook.com/LaMaisondesptitsloups1/" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-fb"></use></svg>Facebook</a><a href="https://instagram.com/la_maison_des_ptits_loups" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-ig"></use></svg>Instagram</a><a href="https://www.tiktok.com/@lamaisondesptitsloups" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-tt"></use></svg>TikTok</a></div></div>
     </div>
-    <figure class="map" data-map style="margin:0" aria-labelledby="map-cap"><div data-map-svg></div><figcaption class="map__legend" id="map-cap"><span>Breuillet, dans l'Essonne : environ 35 km au sud-sud-ouest de Paris à vol d'oiseau.</span><span>Accès : voiture, ou RER C (gares de Breuillet).</span></figcaption></figure>
+    <figure class="map" data-map style="margin:0" aria-labelledby="map-cap"><div data-map-svg></div><figcaption class="map__legend" id="map-cap"><span>Breuillet, dans l'Essonne : environ 35 km au sud-sud-ouest de Paris à vol d'oiseau.</span><span>Accès : voiture, ou RER C (gares de Breuillet).</span></figcaption></figure>
   </div>
 </section>
 
@@ -96,10 +112,10 @@
       <div class="form__row"><div class="field"><label for="c-nom">Nom</label><input id="c-nom" name="nom" autocomplete="name" required><span class="field__err" data-err></span></div><div class="field"><label for="c-mail">E-mail</label><input id="c-mail" name="email" type="email" autocomplete="email" required><span class="field__err" data-err></span></div></div>
       <div class="form__row"><div class="field"><label for="c-tel">Téléphone (facultatif)</label><input id="c-tel" name="tel" type="tel" autocomplete="tel"></div><div class="field"><label for="c-objet">Objet</label><select id="c-objet" name="objet"><option>Un chiot disponible</option><option>Une portée à venir</option><option>Une visite</option><option>Une question sur nos chiens</option><option>Autre</option></select></div></div>
       <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" required></textarea><span class="field__err" data-err></span></div>
-      <label class="check"><input type="checkbox" id="c-rgpd" required><span>J'accepte que mes informations soient utilisées pour répondre à ma demande. Voir les <a class="link link--always" href="mentions-legales.html#donnees">mentions légales</a>.</span></label>
-      <span class="field__err" data-err-rgpd></span>
-      <div class="wizard__nav"><p class="form__demo">Maquette de démonstration : aucun message n'est envoyé.</p><button class="btn" type="submit">Envoyer<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button></div>
-      <div class="success" data-contact-success hidden tabindex="-1"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg><h3 class="h3">Merci pour votre message</h3><p>Dans le site final, il sera transmis à l'élevage. Ici, c'est une démonstration : rien n'a été envoyé.</p></div>
+      <label class="check"><input type="checkbox" id="c-rgpd" required aria-describedby="c-rgpd-err"><span>J'accepte que mes informations soient utilisées pour répondre à ma demande. Voir les <a class="link link--always" href="mentions-legales.html#donnees">mentions légales</a>.</span></label>
+      <span class="field__err" id="c-rgpd-err" role="alert" data-err-rgpd></span>
+      <div class="wizard__nav"><p class="form__demo">Maquette de démonstration : aucun message n'est envoyé.</p><button class="btn" type="submit">Envoyer<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button></div>
+      <div class="success" data-contact-success hidden tabindex="-1"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg><h3 class="h3">Merci pour votre message</h3><p>Dans le site final, il sera transmis à l'élevage. Ici, c'est une démonstration : rien n'a été envoyé.</p></div>
     </form>
   </div>
 </section>

@@ -55,6 +55,7 @@ export function countdownHTML() {
 export function startCountdown(root, iso, { onDone } = {}) {
   const target = dateParis(iso);
   const el = (k) => root.querySelector(`[data-cd="${k}"]`);
+  if (!el('j')) return;
   const pad = (n) => String(n).padStart(2, '0');
   let done = false;
   const tick = () => {
@@ -66,7 +67,7 @@ export function startCountdown(root, iso, { onDone } = {}) {
     if (target - Date.now() <= 0 && !done) { done = true; onDone?.(); }
   };
   tick();
-  setInterval(tick, 1000);
+  const id = setInterval(() => { if (!root.isConnected) return clearInterval(id); tick(); }, 1000);
 }
 
 export function joursAvant(iso, now = new Date()) {

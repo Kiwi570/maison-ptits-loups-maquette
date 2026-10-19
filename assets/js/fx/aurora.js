@@ -51,6 +51,8 @@ void main() {
   gl_FragColor = vec4(col, 1.0);
 }`;
 
+const BASE_DPR = Math.min(window.devicePixelRatio || 1, 2) * 0.5;
+
 export function initAurora({ calm }) {
   const slots = [...document.querySelectorAll('[data-aurora-slot]')];
   if (!slots.length) return null;
@@ -59,7 +61,7 @@ export function initAurora({ calm }) {
   try {
     const probe = document.createElement('canvas');
     if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) return fallback();
-    renderer = new Renderer({ dpr: Math.min(window.devicePixelRatio || 1, 2) * 0.5, alpha: false, antialias: false, depth: false, powerPreference: 'low-power' });
+    renderer = new Renderer({ dpr: BASE_DPR, alpha: false, antialias: false, depth: false, powerPreference: 'low-power' });
     if (!renderer.gl) return fallback();
   } catch (e) { return fallback(); }
   const gl = renderer.gl;
@@ -86,6 +88,7 @@ export function initAurora({ calm }) {
     if (!current) return;
     const r = current.getBoundingClientRect();
     if (!r.width || !r.height) return;
+    renderer.dpr = Math.min(BASE_DPR, 900 / r.width);
     renderer.setSize(r.width, r.height);
     uniforms.uRes.value = [r.width, r.height];
   };
@@ -107,8 +110,9 @@ export function initAurora({ calm }) {
   let mx = 0.5, my = 0.5;
   if (!calm) {
     window.addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth; my = 1 - e.clientY / innerHeight; }, { passive: true });
+    let frame = 0;
     window.gsap.ticker.add(() => {
-      if (document.hidden || !current) return;
+      if (document.hidden || !current || (frame++ & 1)) return;
       const anyVisible = menuOpen || [...visible.values()].some((v) => v > 0);
       if (!anyVisible) return;
       uniforms.uTime.value = 8 + (performance.now() - t0) / 1000;

@@ -33,7 +33,7 @@ export const TESTS = {
   HD: { libelle: 'Hanches', detail: 'Dysplasie de la hanche, grille FCI de A (aucun signe) à E (sévère).' },
   ED: { libelle: 'Coudes', detail: 'Dysplasie du coude, grille de 0 (normal) à 3 (sévère).' },
   Eyes: { libelle: 'Yeux', detail: "Examen des yeux par un vétérinaire : « clear » signifie aucune anomalie détectée le jour de l'examen." },
-  DNA: { libelle: 'ADN', detail: 'Profil ADN enregistré. « comp » indique en général une filiation vérifiée (à confirmer par l\'élevage).' },
+  DNA: { libelle: 'ADN', detail: 'Profil ADN enregistré, utile pour contrôler la filiation. La mention « comp » est à préciser par l\'élevage.' },
 };
 
 export const CHIENS = [
@@ -135,6 +135,11 @@ export function statutPortee(p, now = new Date()) {
     return 'disponible';
   }
   return 'passee';
+}
+
+/* Naissance annoncée dépassée sans date réelle saisie : on l'indique « à confirmer » */
+export function naissanceDepassee(p, now = new Date()) {
+  return !p.naissance && !!p.naissancePrevue && now - parisDate(p.naissancePrevue) > 864e5;
 }
 
 export function portesTriees(now = new Date()) {

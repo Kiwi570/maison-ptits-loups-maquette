@@ -11,14 +11,33 @@
 <meta property="og:description" content="Nos reproducteurs Husky Sibérien et leurs résultats de santé.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="assets/img/ui/partage.jpg">
+<meta property="og:image" content="https://maison-ptits-loups-maquette.vercel.app/assets/img/ui/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/ui/favicon-48.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/ui/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="assets/fonts/intertight-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/intertight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
-<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');var v=null;try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}if(v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('is-calm')</script>
+<link rel="modulepreload" href="assets/js/main.js">
+<link rel="modulepreload" href="assets/js/pages/chiens.js">
+<link rel="modulepreload" href="assets/js/core.js">
+<link rel="modulepreload" href="assets/js/data.js">
+<link rel="modulepreload" href="assets/js/render.js">
+<link rel="modulepreload" href="assets/vendor/lenis/lenis.js">
+<link rel="modulepreload" href="assets/js/fx/snow.js">
+<link rel="modulepreload" href="assets/js/fx/frost.js">
+<link rel="modulepreload" href="assets/js/fx/crystal.js">
+<link rel="modulepreload" href="assets/js/fx/moon.js">
+<link rel="modulepreload" href="assets/vendor/lenis/animate.js">
+<link rel="modulepreload" href="assets/vendor/lenis/dimensions.js">
+<link rel="modulepreload" href="assets/vendor/lenis/emitter.js">
+<link rel="modulepreload" href="assets/vendor/lenis/maths.js">
+<link rel="modulepreload" href="assets/vendor/lenis/virtual-scroll.js">
+<link rel="modulepreload" href="assets/vendor/lenis/debounce.js">
+<script>(function(){var d=document.documentElement,v=null,ss=null;d.classList.remove('no-js');d.classList.add('js');try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}try{ss=sessionStorage}catch(e){}var calm=v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches);if(calm){d.classList.add('is-calm');return}var tr=false;try{tr=!!ss&&ss.getItem('ptits-loups-transition')==='1'}catch(e){}if(tr)d.classList.add('from-transition');else if(false){var seen=false;try{seen=!!ss&&ss.getItem('ptits-loups-intro')==='1'}catch(e){}if(!seen)d.classList.add('play-intro')}})();</script>
 </head>
 <body data-page="chiens">
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -52,7 +71,7 @@
     </div>
   </div>
 </header>
-<div class="menu" id="menu" data-menu aria-hidden="true">
+<div class="menu" id="menu" data-menu aria-hidden="true" data-lenis-prevent>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap">
     <nav class="menu__links" aria-label="Menu"><a href="index.html">Accueil</a><a href="chiens.html" aria-current="page">Nos chiens</a><a href="portees.html">Portées & chiots</a><a href="adopter.html">Adopter</a><a href="contact.html">Contact</a></nav>
@@ -61,13 +80,13 @@
 </div>
 <main id="contenu">
 <section class="phero" data-aurora data-tone="dark" aria-labelledby="titre-chiens">
-  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/chiens-ouverture-crete-9x16.webp"><img src="assets/img/grok/chiens-ouverture-crete-16x9-1280.webp" srcset="assets/img/grok/chiens-ouverture-crete-16x9-1280.webp 1280w, assets/img/grok/chiens-ouverture-crete-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="chiens-ouverture-crete-16x9"></picture></div>
+  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/chiens-ouverture-crete-9x16-720.webp 720w, assets/img/grok/chiens-ouverture-crete-9x16.webp 1080w" sizes="100vw"><img src="assets/img/grok/chiens-ouverture-crete-16x9-1280.webp" srcset="assets/img/grok/chiens-ouverture-crete-16x9-1280.webp 1280w, assets/img/grok/chiens-ouverture-crete-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="chiens-ouverture-crete-16x9"></picture></div>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap"><div class="phero__grid">
     <div class="phero__text">
       <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Nos chiens</span></nav>
-      <h1 class="phero__title" id="titre-chiens" data-hero-title><span class="line">Nos</span><span class="line"><em>chiens</em></span></h1>
-      <p class="lead" data-hero-fade>Les beaux gosses de l'élevage et nos princesses : nos reproducteurs Husky Sibérien, avec leurs résultats de santé.</p>
+      <h1 class="phero__title" id="titre-chiens" data-hero-title><span class="line">Nos</span> <span class="line"><em>chiens</em></span></h1>
+      <p class="lead" data-hero-fade>Les beaux gosses de l'élevage et nos princesses : nos reproducteurs Husky Sibérien, avec leurs résultats de santé.</p>
     </div>
     <div class="phero__duo" data-hero-fade>
       <a class="duo-card" href="#reproducteurs" data-filter-link="male"><figure class="media media--arch" data-frost data-frost-mode="edges"><img src="assets/img/photos/apache-allonge-1280.webp" srcset="assets/img/photos/apache-allonge-640.webp 640w, assets/img/photos/apache-allonge-1280.webp 1280w, assets/img/photos/apache-allonge-1920.webp 1920w" sizes="(max-width: 900px) 45vw, 22vw" width="3264" height="2448" alt="Husky noir et gris couché devant une cabane en bois" loading="eager" fetchpriority="high" decoding="async" style="object-position:40% 50%"></figure><b>Les mâles</b><small>Les beaux gosses de l'élevage</small></a>
@@ -79,7 +98,7 @@
 <section class="section" id="reproducteurs" data-tone="dark">
   <div class="wrap">
     <div class="litter-head" style="margin-bottom:28px">
-      <div class="stack" style="--gap:18px"><p class="label eyebrow">Reproducteurs</p><h2 class="h2" data-split>Six loups, <em>une famille</em></h2></div>
+      <div class="stack" style="--gap:18px"><p class="label eyebrow">Reproducteurs</p><h2 class="h2" data-split>Nos reproducteurs, <em>une famille</em></h2></div>
       <div class="filters" role="group" aria-label="Filtrer les chiens"><button type="button" aria-pressed="true" data-filter="tous">Tous</button><button type="button" aria-pressed="false" data-filter="male">Mâles</button><button type="button" aria-pressed="false" data-filter="femelle">Femelles</button></div>
     </div>
     <p class="lead" style="max-width:60ch;margin-bottom:clamp(40px,6vw,80px)">Nos reproducteurs sont testés pour les maladies génétiques liées à leur race. Les résultats affichés sont ceux communiqués par l'élevage. Touchez une fiche pour l'ouvrir.</p>
@@ -96,10 +115,10 @@
       <h2 class="h2" data-split>Lire un <em>résultat</em></h2>
       <p class="lead">Chaque test suit une grille officielle. Voici comment lire les résultats affichés sur nos fiches.</p>
     </div>
-    <div class="tests-explain"><article class="texp" data-reveal><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg><span class="label">Hanches</span><h3>HD</h3><p>Dépistage de la dysplasie de la hanche par radiographie, lue selon la grille FCI : de <strong>A</strong> (aucun signe) à <strong>E</strong> (forme sévère).</p></article><article class="texp" data-reveal><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg><span class="label">Coudes</span><h3>ED</h3><p>Dépistage de la dysplasie du coude, noté de <strong>0</strong> (normal) à <strong>3</strong> (forme sévère).</p></article><article class="texp" data-reveal><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg><span class="label">Yeux</span><h3>Eyes</h3><p>Examen des yeux par un vétérinaire. <strong>« Clear »</strong> signifie qu'aucune anomalie n'a été détectée le jour de l'examen.</p></article><article class="texp" data-reveal><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg><span class="label">ADN</span><h3>DNA</h3><p>Profil génétique enregistré, utile pour contrôler la filiation. La mention <strong>« comp »</strong> est à préciser par l'élevage.</p></article></div>
+    <div class="tests-explain"><article class="texp" data-reveal><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg><span class="label">Hanches</span><h3>HD</h3><p>Dépistage de la dysplasie de la hanche par radiographie, lue selon la grille FCI : de <strong>A</strong> (aucun signe) à <strong>E</strong> (forme sévère).</p></article><article class="texp" data-reveal><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg><span class="label">Coudes</span><h3>ED</h3><p>Dépistage de la dysplasie du coude, noté de <strong>0</strong> (normal) à <strong>3</strong> (forme sévère).</p></article><article class="texp" data-reveal><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg><span class="label">Yeux</span><h3>Eyes</h3><p>Examen des yeux par un vétérinaire. <strong>« Clear »</strong> signifie qu'aucune anomalie n'a été détectée le jour de l'examen.</p></article><article class="texp" data-reveal><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg><span class="label">ADN</span><h3>DNA</h3><p>Profil génétique enregistré, utile pour contrôler la filiation. La mention <strong>« comp »</strong> est à préciser par l'élevage.</p></article></div>
     <div class="stack" style="--gap:22px;margin-top:clamp(56px,7vw,96px);max-width:900px">
-      <h3 class="h3">Hanches : où se situent nos chiens</h3>
-      <p class="lead" style="max-width:60ch">La grille FCI va de A à E. Les chiens sans résultat publié apparaissent « à compléter ».</p>
+      <h3 class="h3">Hanches : où se situent nos chiens</h3>
+      <p class="lead" style="max-width:60ch">La grille FCI va de A à E. Les chiens sans résultat publié apparaissent « à compléter ».</p>
       <div class="scale__dogs" data-hd-scale></div>
     </div>
   </div>
@@ -112,21 +131,21 @@
     <div class="stack" style="--gap:28px">
       <p class="label eyebrow label--aurora">Nous rendre visite</p>
       <h2 class="cta__title" data-split>Rencontrer <em>nos chiens</em></h2>
-      <p class="lead">Envie de voir les parents d'une portée, ou une question sur un résultat de santé ? Parlons-en.</p>
+      <p class="lead">Envie de voir les parents d'une portée, ou une question sur un résultat de santé ? Parlons-en.</p>
       <div class="row"><a class="btn" data-magnetic href="contact.html#ecrire">Nous écrire<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a><a class="btn btn--ghost" data-magnetic href="tel:+33785206730"><svg aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg>Appeler</a></div>
     </div>
     <div class="cta__contacts">
   <span class="label">Téléphone</span>
-  <div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
+  <div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30" aria-label="Copier le numéro de téléphone"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
   <span class="label" style="margin-top:14px">E-mail</span>
-  <div class="row"><a class="big-contact big-contact--mail" href="mailto:delamaisondesptitsloups@hotmail.com">delamaisondesptitsloups<wbr>@hotmail.com</a><button class="copy" type="button" data-copy="delamaisondesptitsloups@hotmail.com"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
+  <div class="row"><a class="big-contact big-contact--mail" href="mailto:delamaisondesptitsloups@hotmail.com">delamaisondesptitsloups<wbr>@hotmail.com</a><button class="copy" type="button" data-copy="delamaisondesptitsloups@hotmail.com" aria-label="Copier l'adresse e-mail"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
   <span class="label" style="margin-top:14px">Adresse</span>
   <p>1 rue de la Croix Poquet, 91650 Breuillet</p>
 </div>
   </div>
 </section>
 
-<dialog class="sheet" data-sheet aria-labelledby="sheet-title"><div data-sheet-content></div></dialog>
+<dialog class="sheet" data-sheet aria-labelledby="sheet-title" data-lenis-prevent><div data-sheet-content></div></dialog>
 </main>
 <footer class="footer" data-tone="dark">
   <div class="wrap">

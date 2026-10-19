@@ -15,6 +15,7 @@ export function initConstellation(host, { calm }) {
     const key = host.clientWidth < 640 ? 'tall' : 'wide';
     if (key === layoutKey) return;
     layoutKey = key;
+    gsap.killTweensOf(host.querySelectorAll('*'));
     const L = LAYOUTS[key], [W, H] = L.vb;
     const used = new Set();
     let lines = '', pups = '';
@@ -44,7 +45,7 @@ export function initConstellation(host, { calm }) {
       const [x, y] = L.pos[c.id] || [W / 2, H / 2];
       const faint = !used.has(c.id);
       const r = faint ? 7 : 10;
-      return `<g class="star ${faint ? 'star--faint' : ''}" data-star="${c.id}" tabindex="0" role="img" aria-label="${c.nom}, ${c.sexe === 'male' ? 'mâle' : 'femelle'}${faint ? ', prochaine union à compléter' : ''}" transform="translate(${x} ${y})">
+      return `<g class="star ${faint ? 'star--faint' : ''}" data-star="${c.id}" tabindex="0" role="link" aria-label="Fiche de ${c.nom}, ${c.sexe === 'male' ? 'mâle' : 'femelle'}${faint ? ', prochaine union à compléter' : ''}" transform="translate(${x} ${y})">
         <circle class="star-glow" r="${r * 5}"/><circle class="star-core" r="${r}"/>
         <text y="${r + 34}" text-anchor="middle">${c.nom}</text>
         <text class="sub" y="${r + 54}" text-anchor="middle">${c.sexe === 'male' ? 'Mâle' : 'Femelle'}</text>
@@ -70,7 +71,7 @@ export function initConstellation(host, { calm }) {
       g.addEventListener('pointerenter', show); g.addEventListener('pointerleave', hide);
       g.addEventListener('focus', show); g.addEventListener('blur', hide);
       g.addEventListener('click', () => { location.href = `chiens.html#${c.id}`; });
-      g.addEventListener('keydown', (e) => { if (e.key === 'Enter') location.href = `chiens.html#${c.id}`; });
+      g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); location.href = `chiens.html#${c.id}`; } });
     });
   };
   const animate = () => {

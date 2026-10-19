@@ -68,8 +68,10 @@ class Frost {
     ctx.globalCompositeOperation = 'destination-out';
     const R = Math.hypot(w, h) / 2;
     const g = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, R);
-    g.addColorStop(0, `rgba(0,0,0,${a})`); g.addColorStop(0.62, `rgba(0,0,0,${a})`); g.addColorStop(1, `rgba(0,0,0,${a * 0.35})`);
+    g.addColorStop(0, `rgba(0,0,0,${a})`); g.addColorStop(0.68, `rgba(0,0,0,${a})`); g.addColorStop(1, `rgba(0,0,0,${a * 0.4})`);
     ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    // ce qui reste du givre devient un simple liseré sur les bords
+    ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fillRect(0, 0, w, h);
   }
   reveal() {
     if (this.revealed) return;

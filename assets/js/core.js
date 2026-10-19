@@ -1,7 +1,6 @@
 /* Moteur commun : défilement fluide, en-tête, menu, transitions, curseur,
    révélations, parallaxe, givre, neige, aurore. */
 import { Lenis } from '../vendor/lenis/lenis.js';
-import { initAurora } from './fx/aurora.js';
 import { initSnow } from './fx/snow.js';
 import { initFrost } from './fx/frost.js';
 
@@ -16,24 +15,45 @@ export const store = {
   sget: (k) => safe(() => sessionStorage.getItem(k)), sset: (k, v) => safe(() => sessionStorage.setItem(k, v)), sdel: (k) => safe(() => sessionStorage.removeItem(k)),
 };
 const bound = new WeakSet();
+/* Chemins comparables : /chiens, /chiens.html et /chiens/ désignent la même page ; / et /index.html aussi */
+export const pageKey = (path) => (path.replace(/\/index(\.html)?$/, '/').replace(/\.html$/, '').replace(/(.)\/$/, '$1') || '/');
+const cleanHost = /(^|\.)vercel\.app$/.test(location.hostname) || (location.pathname.length > 1 && !/(\.html|\/)$/.test(location.pathname));
+const navHref = (url) => {
+  if (!cleanHost || !/\.html$/.test(url.pathname)) return url.href;
+  const u = new URL(url.href); u.pathname = pageKey(u.pathname); return u.href;
+};
 const once = (el) => (bound.has(el) ? false : (bound.add(el), true));
+export const focusTarget = (el) => {
+  if (!el) return;
+  if (!el.matches('a[href], button, input, select, textarea, [tabindex]')) el.setAttribute('tabindex', '-1');
+  el.focus({ preventScroll: true });
+};
 
 export async function initCore() {
   gsap.registerPlugin(ScrollTrigger, SplitText);
   gsap.config({ nullTargetWarn: false });
   const core = { calm, fine, lenis: null, aurora: null, frost: null, fromTransition: false };
 
-  /* Mode calme */
+  /* Mode calme : on recharge la page et on revient à la même section */
+  const sections = () => $$('main > section, main > .marquee, main > .pin-spacer > section');
   $$('[data-calm-toggle]').forEach((b) => {
     b.setAttribute('aria-pressed', String(calm));
     b.addEventListener('click', () => {
       store.set('ptits-loups-calme', calm ? '0' : '1');
-      store.sset('ptits-loups-scroll', String(window.scrollY));
+      const list = sections(); let idx = 0;
+      list.forEach((sec, i) => { if (sec.getBoundingClientRect().top <= 120) idx = i; });
+      store.sset('ptits-loups-section', String(idx));
       location.reload();
     });
   });
-  const restore = store.sget('ptits-loups-scroll');
-  if (restore) { store.sdel('ptits-loups-scroll'); requestAnimationFrame(() => window.scrollTo(0, +restore)); }
+  core.restoreSection = () => {
+    const v = store.sget('ptits-loups-section');
+    if (v == null) return false;
+    store.sdel('ptits-loups-section');
+    const sec = sections()[+v];
+    if (sec && +v > 0) { window.scrollTo(0, sec.getBoundingClientRect().top + window.scrollY); core.lenis?.scrollTo(window.scrollY, { immediate: true }); }
+    return true;
+  };
 
   /* Défilement fluide */
   if (!calm) {
@@ -52,12 +72,13 @@ export async function initCore() {
     const a = e.target.closest('a[href*="#"]');
     if (!a) return;
     const url = new URL(a.href, location.href);
-    if (url.pathname !== location.pathname || !url.hash || url.hash.length < 2) return;
+    if (pageKey(url.pathname) !== pageKey(location.pathname) || !url.hash || url.hash.length < 2) return;
     const t = document.getElementById(decodeURIComponent(url.hash.slice(1)));
     if (!t) return;
     e.preventDefault();
     closeMenu();
     core.scrollTo(t);
+    focusTarget(t);
     history.replaceState(null, '', url.hash);
   });
 
@@ -67,8 +88,9 @@ export async function initCore() {
   const onScroll = () => {
     const y = window.scrollY;
     header.classList.toggle('is-scrolled', y > 30);
-    if (!document.body.classList.contains('menu-open')) header.classList.toggle('is-hidden', y > lastY + 2 && y > 320);
-    if (y < lastY - 2) header.classList.remove('is-hidden');
+    const d = y - lastY;
+    if (d > 3 && y > 320 && !document.body.classList.contains('menu-open')) header.classList.add('is-hidden');
+    else if (d < -3 || y < 120) header.classList.remove('is-hidden');
     lastY = y;
   };
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -84,12 +106,16 @@ export async function initCore() {
   function openMenu() {
     document.body.classList.add('menu-open'); burger.setAttribute('aria-expanded', 'true'); burger.setAttribute('aria-label', 'Fermer le menu');
     menu.setAttribute('aria-hidden', 'false'); header.classList.remove('is-hidden'); core.lenis?.stop(); core.aurora?.useMenu(true);
+    $$('main, footer, .actionbar').forEach((el) => { el.inert = true; });
     if (!calm) gsap.fromTo($$('.menu__links a', menu), { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.05, duration: 0.8, ease: 'expo.out', delay: 0.15 });
+    setTimeout(() => $('.menu__links a', menu)?.focus({ preventScroll: true }), calm ? 0 : 350);
   }
   function closeMenu() {
     if (!document.body.classList.contains('menu-open')) return;
     document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Ouvrir le menu');
     menu.setAttribute('aria-hidden', 'true'); core.lenis?.start(); core.aurora?.useMenu(false);
+    $$('main, footer, .actionbar').forEach((el) => { el.inert = false; });
+    if (menu.contains(document.activeElement)) burger.focus({ preventScroll: true });
   }
   burger?.addEventListener('click', () => (document.body.classList.contains('menu-open') ? closeMenu() : openMenu()));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
@@ -97,15 +123,15 @@ export async function initCore() {
 
   /* Transitions de page : rideau de givre */
   const curtain = $('[data-curtain]'), panel = $('.curtain__panel', curtain), clogo = $('.curtain__logo', curtain);
-  $('.curtain__frost', curtain).style.backgroundImage = `url(${new URL('../img/grok/commun-texture-givre-1x1.webp', import.meta.url)})`;
-  if (!calm && store.sget('ptits-loups-transition') === '1') {
+  if (!calm) $('.curtain__frost', curtain).style.backgroundImage = `url(${new URL('../img/grok/commun-texture-givre-1x1.webp', import.meta.url)})`;
+  if (!calm && (store.sget('ptits-loups-transition') === '1' || document.documentElement.classList.contains('from-transition'))) {
     store.sdel('ptits-loups-transition');
     core.fromTransition = true;
     gsap.set(curtain, { visibility: 'visible' }); gsap.set(panel, { yPercent: 0 }); gsap.set(clogo, { opacity: 1 });
   }
   core.curtainOut = () => {
     if (!core.fromTransition) return Promise.resolve();
-    return new Promise((res) => gsap.timeline({ onComplete: () => { gsap.set(curtain, { visibility: 'hidden' }); res(); } })
+    return new Promise((res) => gsap.timeline({ onComplete: () => { gsap.set(curtain, { visibility: 'hidden' }); document.documentElement.classList.remove('from-transition'); res(); } })
       .to(clogo, { opacity: 0, duration: 0.25 })
       .to(panel, { yPercent: -100, duration: 0.9, ease: 'expo.inOut' }, 0.05));
   };
@@ -114,16 +140,19 @@ export async function initCore() {
     if (!a || calm || e.defaultPrevented || a.target === '_blank' || a.hasAttribute('download') || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
     const url = new URL(a.href, location.href);
     if (url.origin !== location.origin || !/^https?:$/.test(url.protocol)) return;
-    if (url.pathname === location.pathname) return;
+    if (pageKey(url.pathname) === pageKey(location.pathname)) return;
     e.preventDefault();
+    const dest = navHref(url);
+    $$('dialog[open]').forEach((d) => d.close());
+    closeMenu();
     store.sset('ptits-loups-transition', '1');
     gsap.timeline()
       .set(curtain, { visibility: 'visible' })
       .fromTo(panel, { yPercent: 100 }, { yPercent: 0, duration: 0.75, ease: 'expo.inOut' })
       .to(clogo, { opacity: 1, duration: 0.25 }, '-=.2')
-      .add(() => { location.href = a.href; });
+      .add(() => { location.href = dest; });
   });
-  window.addEventListener('pageshow', (e) => { if (e.persisted) { gsap.set(curtain, { visibility: 'hidden' }); gsap.set(panel, { yPercent: 100 }); } });
+  window.addEventListener('pageshow', (e) => { if (e.persisted) { store.sdel('ptits-loups-transition'); gsap.set(curtain, { visibility: 'hidden' }); gsap.set(panel, { yPercent: 100 }); gsap.set(clogo, { opacity: 0 }); } });
 
   /* Curseur */
   const cursor = $('[data-cursor]');
@@ -148,7 +177,8 @@ export async function initCore() {
     if (!b) return;
     const txt = b.dataset.copy;
     const label = b.lastChild;
-    const done = () => { b.classList.add('ok'); const o = label.textContent; label.textContent = 'Copié'; setTimeout(() => { b.classList.remove('ok'); label.textContent = o; }, 1800); };
+    if (!b.dataset.label) b.dataset.label = label.textContent;
+    const done = () => { b.classList.add('ok'); label.textContent = 'Copié'; clearTimeout(b._t); b._t = setTimeout(() => { b.classList.remove('ok'); label.textContent = b.dataset.label; }, 1800); };
     try { await navigator.clipboard.writeText(txt); done(); } catch (err) {
       const r = document.createRange(); const target = b.previousElementSibling || b; r.selectNodeContents(target);
       const s = getSelection(); s.removeAllRanges(); s.addRange(r);
@@ -160,7 +190,12 @@ export async function initCore() {
   $$('[data-years]').forEach((el) => { const n = new Date().getFullYear() - 2020; el.textContent = n; el.dataset.count = n; });
 
   /* Ambiance */
-  core.aurora = initAurora({ calm });
+  core.aurora = null;
+  core.loadAurora = () => import('./fx/aurora.js').then(({ initAurora }) => {
+    core.aurora = initAurora({ calm });
+    core.aurora?.setIntensity(1, calm ? 0 : 2.4);
+    if (document.body.classList.contains('menu-open')) core.aurora?.useMenu(true);
+  }).catch(() => {});
   if (!calm) { const c = $('[data-snow]'); if (c) initSnow(c); } else $('[data-snow]')?.remove();
   core.frost = calm ? null : await initFrost();
 
@@ -257,27 +292,31 @@ function heroIn(core) {
   const title = $('[data-hero-title]');
   const fades = $$('[data-hero-fade]');
   const header = $('[data-header]');
-  core.aurora?.setIntensity(1, calm ? 0 : 2.4);
   if (calm) return;
   const tl = gsap.timeline();
   if (title) {
-    const split = SplitText.create(title, { type: 'words,chars', charsClass: 'ch' });
     gsap.set(title, { opacity: 1 });
+    const split = SplitText.create(title, { type: 'words,chars', charsClass: 'ch' });
     tl.from(split.chars, { yPercent: 118, rotate: 6, duration: 1.35, stagger: 0.026, ease: 'expo.out' }, 0);
   }
-  if (fades.length) tl.from(fades, { y: 30, opacity: 0, duration: 1.1, stagger: 0.09, ease: 'expo.out' }, 0.35);
-  tl.from(header, { yPercent: -100, opacity: 0, duration: 1, ease: 'expo.out' }, 0.2);
+  if (fades.length) tl.fromTo(fades, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, stagger: 0.09, ease: 'expo.out', clearProps: 'transform' }, 0.35);
+  tl.from($('.header__inner', header), { y: -40, opacity: 0, duration: 1.1, ease: 'expo.out', clearProps: 'transform,opacity' }, 0.2);
   const media = $$('.phero__media, .phero__duo .duo-card');
-  if (media.length) tl.from(media, { y: 70, opacity: 0, duration: 1.4, stagger: 0.12, ease: 'expo.out' }, 0.25);
+  if (media.length) tl.fromTo(media, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 1.4, stagger: 0.12, ease: 'expo.out', clearProps: 'transform' }, 0.25);
   return tl;
 }
 
 async function afterPage(core) {
   core.bind(document);
   // Images chargées tardivement : recalcul des positions
-  let rt;
-  const refresh = () => { clearTimeout(rt); rt = setTimeout(() => ScrollTrigger.refresh(), 250); };
-  $$('img[loading="lazy"]').forEach((img) => img.complete || img.addEventListener('load', refresh, { once: true }));
   await (document.fonts?.ready || Promise.resolve());
+  ScrollTrigger.sort();
   ScrollTrigger.refresh();
+  if (core.restoreSection()) return;
+  const id = decodeURIComponent(location.hash.slice(1));
+  const target = id && /^[\w-]+$/.test(id) ? document.getElementById(id) : null;
+  if (target && target.tagName !== 'MAIN') {
+    window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 90);
+    core.lenis?.scrollTo(window.scrollY, { immediate: true });
+  }
 }

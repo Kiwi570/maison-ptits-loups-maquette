@@ -1,5 +1,5 @@
 /* Gabarits partagés : cartes chiens, fiches, portées, mentions d'annonce. */
-import { ELEVAGE, CHIENS, PORTEES, TESTS, chien, statutPortee, dateLongue, prix, dateParis } from './data.js';
+import { ELEVAGE, CHIENS, PORTEES, TESTS, chien, statutPortee, dateLongue, prix, dateParis, naissanceDepassee } from './data.js';
 import { CRYSTAL } from './fx/crystal.js';
 import { moonSVG, countdownHTML, joursAvant } from './fx/moon.js';
 
@@ -13,9 +13,9 @@ export function img(name, alt, sizes = '(max-width: 900px) 90vw, 33vw', pos, eag
   return `<img src="${b}-1280.webp" srcset="${b}-640.webp 640w, ${b}-1280.webp 1280w, ${b}-1920.webp 1920w" sizes="${sizes}" alt="${esc(alt)}" loading="${eager ? 'eager' : 'lazy'}" decoding="async"${pos ? ` style="object-position:${pos}"` : ''}>`;
 }
 
-export function testBadges(tests) {
-  if (!tests?.length) return `<div class="tests">${todo('Résultats de santé à compléter')}</div>`;
-  return `<div class="tests">${tests.map((t) => `<span class="test" title="${esc(`${TESTS[t.code].libelle} : ${TESTS[t.code].detail}`)}">${CRYSTAL}${t.code}${t.valeur ? ` <span>${esc(t.valeur)}</span>` : ''}</span>`).join('')}</div>`;
+export function testBadges(tests, tag = 'div') {
+  if (!tests?.length) return `<${tag} class="tests">${todo('Résultats de santé à compléter')}</${tag}>`;
+  return `<${tag} class="tests">${tests.map((t) => `<span class="test" title="${esc(`${TESTS[t.code].libelle} : ${TESTS[t.code].detail}`)}">${CRYSTAL}${t.code}${t.valeur ? ` <span>${esc(t.valeur)}</span>` : ''}</span>`).join('')}</${tag}>`;
 }
 
 export function dogCard(c, { href } = {}) {
@@ -26,7 +26,7 @@ export function dogCard(c, { href } = {}) {
     <span class="dog__meta">
       <span class="dog__kicker">${sexe(c)} · ${c.race}</span>
       <span class="dog__name">${esc(c.nom)}${c.nomComplet !== c.nom ? `<small>${esc(c.nomComplet)}</small>` : ''}</span>
-      ${testBadges(c.tests)}
+      ${testBadges(c.tests, 'span')}
       <span class="dog__more">Voir la fiche${ARROW}</span>
     </span>
   </${tag}>`;
@@ -79,6 +79,7 @@ export function litterChips() {
       const parts = [d.femelles ? `${d.femelles} femelle${d.femelles > 1 ? 's' : ''}` : '', d.males ? `${d.males} mâle${d.males > 1 ? 's' : ''}` : ''].filter(Boolean).join(' et ');
       return `<a class="chip" href="portees.html#${p.id}"><i class="dot"></i><span><b>${parts}</b> disponible${d.femelles + d.males > 1 ? 's' : ''} · ${nom}</span></a>`;
     }
+    if (naissanceDepassee(p)) return `<a class="chip" href="portees.html#${p.id}"><i class="dot dot--ice"></i><span><b>Naissance attendue</b> · ${nom}</span></a>`;
     return `<a class="chip" href="portees.html#${p.id}"><i class="dot dot--ice"></i><span><b>Naissance vers le ${shortDate(p.naissancePrevue)}</b> · ${nom}</span></a>`;
   }).join('');
 }
@@ -120,7 +121,8 @@ export function litterBlock(p) {
       ${legalBox(p)}
       <div class="row">${p.annonce ? `<button class="btn btn--ghost btn--small" type="button" data-poster="${p.annonce}" data-poster-alt="Annonce de la portée ${mere.nom} et ${pere.nom}">Voir l'annonce</button>` : ''}<a class="btn btn--small" data-magnetic href="adopter.html?portee=${p.id}#candidature">Réserver un chiot${ARROW}</a></div>`;
   } else if (st === 'a-venir') {
-    body = `<div class="moon-block">${moonSVG()}<div class="stack" style="--gap:14px"><span class="label">Naissance attendue dans environ</span>${countdownHTML()}</div></div>
+    const late = naissanceDepassee(p);
+    body = `<div class="moon-block">${moonSVG()}<div class="stack" style="--gap:14px">${late ? `<span class="label">Naissance annoncée vers le ${dateLongue(p.naissancePrevue)}</span>${todo('Date de naissance à confirmer')}` : `<span class="label">Naissance attendue dans environ</span>${countdownHTML()}`}</div></div>
       <p class="lead" style="max-width:48ch">La lune se remplit à mesure que la naissance approche. Inscrivez-vous dès maintenant pour être prévenu.</p>
       <dl class="kv">
         <div><dt>Mère</dt><dd>${esc(mere.nom)}</dd></div><div><dt>Père</dt><dd>${esc(pere.nom)}</dd></div>
@@ -128,9 +130,9 @@ export function litterBlock(p) {
       </dl>
       <div class="row">${p.affiche ? `<button class="btn btn--ghost btn--small" type="button" data-poster="${p.affiche}" data-poster-alt="Affiche de l'union ${mere.nom} et ${pere.nom}">Voir l'affiche</button>` : ''}<a class="btn btn--small" data-magnetic href="adopter.html?portee=${p.id}#candidature">Se positionner${ARROW}</a></div>`;
   } else {
-    body = `<p class="lead">Portée née ${p.naissance ? `le ${dateLongue(p.naissance)}` : ''}. Tous les chiots ont rejoint leur famille.</p>`;
+    body = `<p class="lead">Portée ${p.naissance ? `née le ${dateLongue(p.naissance)}` : 'passée'}.</p>${todo('Informations sur cette portée à compléter')}`;
   }
-  return `<article class="litter" id="${p.id}" data-litter="${st}" data-countdown-target="${st === 'a-venir' ? p.naissancePrevue : ''}">
+  return `<article class="litter" id="${p.id}" data-litter="${st}" data-countdown-target="${st === 'a-venir' ? p.naissancePrevue : ''}" data-late="${st === 'a-venir' && naissanceDepassee(p) ? '1' : ''}">
     <div class="stack" style="--gap:28px">${head}<h3 class="litter__title">${esc(mere.nom)} <em>×</em> ${esc(pere.nom)}</h3>${parents}</div>
     <div class="litter__body">${body}</div>
   </article>`;
@@ -153,10 +155,10 @@ export function seasonCard(p) {
     </article>`;
   }
   if (st === 'a-venir') {
-    return `<article class="season-card" data-reveal data-countdown-target="${p.naissancePrevue}">
+    return `<article class="season-card" data-reveal data-countdown-target="${p.naissancePrevue}" data-late="${naissanceDepassee(p) ? '1' : ''}">
       <div class="litter-head"><span class="status"><i class="dot dot--ice"></i>À venir</span><span class="label">Vers le ${dateLongue(p.naissancePrevue)}</span></div>
       <h3>${esc(mere.nom)} <em>×</em> ${esc(pere.nom)}</h3>
-      <div class="moon-block">${moonSVG()}<div class="stack" style="--gap:12px"><span class="label">Naissance dans environ</span>${countdownHTML()}</div></div>
+      <div class="moon-block">${moonSVG()}<div class="stack" style="--gap:12px">${naissanceDepassee(p) ? todo('Date de naissance à confirmer') : `<span class="label">Naissance dans environ</span>${countdownHTML()}`}</div></div>
       <p style="color:var(--mist)">La lune se remplit à mesure que la naissance approche.</p>
       <div class="row"><a class="btn btn--ghost" data-magnetic href="adopter.html?portee=${p.id}#candidature">Se positionner${ARROW}</a></div>
     </article>`;

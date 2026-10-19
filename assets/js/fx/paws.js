@@ -1,8 +1,9 @@
-/* Traces de pattes qui se posent une à une le long du parcours d'adoption. */
+/* Traces de pattes qui se posent une à une le long du parcours d'adoption.
+   Sur ordinateur, la piste serpente dans l'allée centrale, entre les photos et les textes.
+   Sur téléphone (une seule colonne), elle est masquée. */
 const NS = 'http://www.w3.org/2000/svg';
 
 function smoothPath(pts) {
-  if (pts.length < 2) return '';
   let d = `M${pts[0][0]} ${pts[0][1]}`;
   for (let i = 0; i < pts.length - 1; i++) {
     const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
@@ -15,23 +16,30 @@ function smoothPath(pts) {
 
 export function initPaws(section, { calm }) {
   const svg = section.querySelector('[data-paws]');
-  const dots = [...section.querySelectorAll('[data-step-dot]')];
-  if (!svg || dots.length < 2) return;
+  const stepsEl = section.querySelector('.steps');
+  const steps = [...section.querySelectorAll('[data-step]')];
+  if (!svg || !stepsEl || steps.length < 2) return;
   let paws = [];
   const build = () => {
+    svg.innerHTML = ''; paws = [];
     const sr = section.getBoundingClientRect();
+    if (sr.width < 901) { svg.style.display = 'none'; return; }
+    svg.style.display = '';
     svg.setAttribute('viewBox', `0 0 ${sr.width} ${sr.height}`);
     svg.style.color = '#2E6FA8';
-    svg.innerHTML = '';
-    const pts = dots.map((d) => { const r = d.getBoundingClientRect(); return [r.left - sr.left + r.width / 2, r.top - sr.top + r.height / 2]; });
-    pts.unshift([pts[0][0] - sr.width * 0.08, pts[0][1] - 220]);
+    const er = stepsEl.getBoundingClientRect();
+    const left = er.left - sr.left, w = er.width;
+    const pts = [];
+    steps.forEach((st, i) => {
+      const r = st.getBoundingClientRect();
+      const x = left + w * (i % 2 ? 6.5 / 12 : 5.5 / 12);
+      pts.push([x, r.top - sr.top + r.height * 0.2], [x, r.top - sr.top + r.height * 0.8]);
+    });
+    pts.unshift([pts[0][0], pts[0][1] - 160]);
     const guide = document.createElementNS(NS, 'path');
     guide.setAttribute('d', smoothPath(pts)); guide.setAttribute('fill', 'none');
     svg.appendChild(guide);
-    const L = guide.getTotalLength();
-    const step = sr.width < 700 ? 34 : 44;
-    const size = sr.width < 700 ? 14 : 17;
-    paws = [];
+    const L = guide.getTotalLength(), step = 44, size = 17;
     for (let s = 6, k = 0; s < L - 6; s += step, k++) {
       const p = guide.getPointAtLength(s), q = guide.getPointAtLength(Math.min(L, s + 2));
       const ang = Math.atan2(q.y - p.y, q.x - p.x);
@@ -49,8 +57,8 @@ export function initPaws(section, { calm }) {
     update();
   };
   const update = () => {
-    const top = section.getBoundingClientRect().top;
-    const limit = window.innerHeight * 0.72 - top;
+    if (!paws.length) return;
+    const limit = window.innerHeight * 0.72 - section.getBoundingClientRect().top;
     paws.forEach((p) => p.u.classList.toggle('on', calm || p.y < limit));
   };
   build();

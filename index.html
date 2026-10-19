@@ -11,14 +11,34 @@
 <meta property="og:description" content="Élevage familial de Husky Sibérien à Breuillet (Essonne) : chiots LOF, parents testés, élevés en famille.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="assets/img/ui/partage.jpg">
+<meta property="og:image" content="https://maison-ptits-loups-maquette.vercel.app/assets/img/ui/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/ui/favicon-48.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/ui/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="assets/fonts/intertight-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/intertight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
-<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');var v=null;try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}if(v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('is-calm')</script>
+<link rel="modulepreload" href="assets/js/main.js">
+<link rel="modulepreload" href="assets/js/pages/home.js">
+<link rel="modulepreload" href="assets/js/core.js">
+<link rel="modulepreload" href="assets/js/data.js">
+<link rel="modulepreload" href="assets/js/render.js">
+<link rel="modulepreload" href="assets/js/fx/moon.js">
+<link rel="modulepreload" href="assets/vendor/lenis/lenis.js">
+<link rel="modulepreload" href="assets/js/fx/snow.js">
+<link rel="modulepreload" href="assets/js/fx/frost.js">
+<link rel="modulepreload" href="assets/js/fx/crystal.js">
+<link rel="modulepreload" href="assets/vendor/lenis/animate.js">
+<link rel="modulepreload" href="assets/vendor/lenis/dimensions.js">
+<link rel="modulepreload" href="assets/vendor/lenis/emitter.js">
+<link rel="modulepreload" href="assets/vendor/lenis/maths.js">
+<link rel="modulepreload" href="assets/vendor/lenis/virtual-scroll.js">
+<link rel="modulepreload" href="assets/vendor/lenis/debounce.js">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Élevage De la Maison des p'tits loups", "description": "Élevage familial de Husky Sibérien à Breuillet (Essonne) : chiots inscrits au LOF, élevés en famille.", "url": "https://maison-ptits-loups-maquette.vercel.app/", "image": "https://maison-ptits-loups-maquette.vercel.app/assets/img/ui/partage.jpg", "logo": "https://maison-ptits-loups-maquette.vercel.app/assets/img/ui/logo-medaille-512.png", "telephone": "+33 7 85 20 67 30", "email": "delamaisondesptitsloups@hotmail.com", "address": {"@type": "PostalAddress", "streetAddress": "1 rue de la Croix Poquet", "postalCode": "91650", "addressLocality": "Breuillet", "addressRegion": "Essonne", "addressCountry": "FR"}, "sameAs": ["https://www.facebook.com/LaMaisondesptitsloups1/", "https://instagram.com/la_maison_des_ptits_loups", "https://www.tiktok.com/@lamaisondesptitsloups"]}</script>
+<script>(function(){var d=document.documentElement,v=null,ss=null;d.classList.remove('no-js');d.classList.add('js');try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}try{ss=sessionStorage}catch(e){}var calm=v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches);if(calm){d.classList.add('is-calm');return}var tr=false;try{tr=!!ss&&ss.getItem('ptits-loups-transition')==='1'}catch(e){}if(tr)d.classList.add('from-transition');else if(true){var seen=false;try{seen=!!ss&&ss.getItem('ptits-loups-intro')==='1'}catch(e){}if(!seen)d.classList.add('play-intro')}})();</script>
 </head>
 <body data-page="home">
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -52,7 +72,7 @@
     </div>
   </div>
 </header>
-<div class="menu" id="menu" data-menu aria-hidden="true">
+<div class="menu" id="menu" data-menu aria-hidden="true" data-lenis-prevent>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap">
     <nav class="menu__links" aria-label="Menu"><a href="index.html" aria-current="page">Accueil</a><a href="chiens.html">Nos chiens</a><a href="portees.html">Portées & chiots</a><a href="adopter.html">Adopter</a><a href="contact.html">Contact</a></nav>
@@ -60,15 +80,15 @@
   </div>
 </div>
 <main id="contenu">
-<div class="intro" data-intro aria-hidden="true"><span class="intro__eye" data-eye="l"></span><span class="intro__eye" data-eye="r"></span><button class="intro__skip" type="button" data-intro-skip>Passer</button></div>
+<div class="intro" data-intro><span class="intro__eye" data-eye="l" aria-hidden="true"></span><span class="intro__eye" data-eye="r" aria-hidden="true"></span><button class="intro__skip" type="button" data-intro-skip>Passer</button></div>
 <section class="hero" data-aurora data-tone="dark" aria-labelledby="titre-accueil">
-  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/accueil-ouverture-9x16.webp"><img src="assets/img/grok/accueil-ouverture-16x9-1280.webp" srcset="assets/img/grok/accueil-ouverture-16x9-1280.webp 1280w, assets/img/grok/accueil-ouverture-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="accueil-ouverture-16x9"></picture></div>
+  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/accueil-ouverture-9x16-720.webp 720w, assets/img/grok/accueil-ouverture-9x16.webp 1080w" sizes="100vw"><img src="assets/img/grok/accueil-ouverture-16x9-1280.webp" srcset="assets/img/grok/accueil-ouverture-16x9-1280.webp 1280w, assets/img/grok/accueil-ouverture-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="accueil-ouverture-16x9"></picture></div>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap">
     <div class="hero__grid">
       <div class="hero__text">
         <p class="label eyebrow label--aurora" data-hero-fade>Élevage familial de Husky Sibérien · Breuillet, Essonne</p>
-        <h1 class="hero__title" id="titre-accueil" data-hero-title><span class="line">La Maison</span><span class="line indent">des <em>p'tits</em> loups</span></h1>
+        <h1 class="hero__title" id="titre-accueil" data-hero-title><span class="line">La Maison</span> <span class="line indent">des <em>p'tits</em> loups</span></h1>
         <p class="lead" data-hero-fade>Plus qu'un métier, une passion. Des chiots inscrits au LOF, élevés en famille, et une éleveuse qui vous accompagne avant, pendant et après l'adoption.</p>
         <div class="row" data-hero-fade><a class="btn" data-magnetic href="portees.html">Voir les chiots disponibles<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a><a class="btn btn--ghost" data-magnetic href="chiens.html">Découvrir nos chiens</a></div>
         <div class="hero__chips" data-hero-fade data-litter-chips></div>
@@ -89,8 +109,8 @@
     </div>
     <div class="welcome__body">
       <div class="prose" data-reveal>
-        <p>Depuis toute petite, le Husky Sibérien me fascine. Son regard captivant, sa noble allure et sa sensibilité unique ont très tôt fait vibrer mon cœur. Cette passion ne m'a jamais quittée : en 2020, j'ai franchi le cap pour créer mon propre <strong>élevage familial</strong>.</p>
-        <p>Tout a commencé avec <strong>Balto</strong>, notre premier husky. Dès ce jour, j'ai su que j'en ferais mon métier : bien plus qu'un métier, une passion et une philosophie de vie.</p>
+        <p>Depuis toute petite, le Husky Sibérien me fascine. Son regard captivant, sa noble allure et sa sensibilité unique ont très tôt fait vibrer mon cœur. Cette passion ne m'a jamais quittée : en 2020, j'ai franchi le cap pour créer mon propre <strong>élevage familial</strong>.</p>
+        <p>Tout a commencé avec <strong>Balto</strong>, notre premier husky. Dès ce jour, j'ai su que j'en ferais mon métier : bien plus qu'un métier, une passion et une philosophie de vie.</p>
         <p>Aujourd'hui, c'est avec un immense bonheur et un engagement quotidien que je partage ma vie avec ces magnifiques compagnons.</p>
       </div>
       <div class="facts" data-reveal>
@@ -123,7 +143,7 @@
       </article>
       <article class="pledge" data-tilt data-reveal>
         <div class="pledge__figure"><figure class="media" data-frost><img src="assets/img/photos/apache-1280.webp" srcset="assets/img/photos/apache-640.webp 640w, assets/img/photos/apache-1280.webp 1280w, assets/img/photos/apache-1920.webp 1920w" sizes="(max-width: 900px) 90vw, 30vw" width="2132" height="3412" alt="Husky noir et gris aux yeux clairs, debout dans la cour" loading="lazy" decoding="async" style="object-position:50% 25%"></figure><span class="pledge__icon"><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg></span></div>
-        <div class="pledge__body"><h3 class="pledge__title">Parents testés</h3><p>Nos reproducteurs passent des tests de santé (hanches, yeux, ADN). Leurs résultats sont publiés sur chaque fiche.</p><a class="link link--always" href="chiens.html#tests">Lire les résultats</a></div>
+        <div class="pledge__body"><h3 class="pledge__title">Parents testés</h3><p>Nos reproducteurs passent des tests de santé (hanches, yeux, ADN). Les résultats communiqués par l'élevage figurent sur leurs fiches.</p><a class="link link--always" href="chiens.html#tests">Lire les résultats</a></div>
       </article>
       <article class="pledge" data-tilt data-reveal>
         <div class="pledge__figure"><figure class="media" data-frost><img src="assets/img/photos/chien-salon-1280.webp" srcset="assets/img/photos/chien-salon-640.webp 640w, assets/img/photos/chien-salon-1280.webp 1280w, assets/img/photos/chien-salon-1920.webp 1920w" sizes="(max-width: 900px) 90vw, 30vw" width="922" height="2048" alt="Un de nos chiens couché dans le salon, à côté d'une statue de lion" loading="lazy" decoding="async" style="object-position:50% 60%"></figure><span class="pledge__icon"><svg class="crystal" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 12L12.00 2.00M12.00 7.00L9.72 4.47M12.00 7.00L14.28 4.47M12.00 4.50L10.53 2.87M12.00 4.50L13.47 2.87"/><path pathLength="1" d="M12 12L20.66 7.00M16.33 9.50L17.38 6.27M16.33 9.50L19.66 10.21M18.50 8.25L19.18 6.16M18.50 8.25L20.65 8.71"/><path pathLength="1" d="M12 12L20.66 17.00M16.33 14.50L19.66 13.79M16.33 14.50L17.38 17.73M18.50 15.75L20.65 15.29M18.50 15.75L19.18 17.84"/><path pathLength="1" d="M12 12L12.00 22.00M12.00 17.00L14.28 19.53M12.00 17.00L9.72 19.53M12.00 19.50L13.47 21.13M12.00 19.50L10.53 21.13"/><path pathLength="1" d="M12 12L3.34 17.00M7.67 14.50L6.62 17.73M7.67 14.50L4.34 13.79M5.50 15.75L4.82 17.84M5.50 15.75L3.35 15.29"/><path pathLength="1" d="M12 12L3.34 7.00M7.67 9.50L4.34 10.21M7.67 9.50L6.62 6.27M5.50 8.25L3.35 8.71M5.50 8.25L4.82 6.16"/><path pathLength="1" d="M12 9.6L14.08 10.8L14.08 13.2L12 14.4L9.92 13.2L9.92 10.8Z"/></svg></span></div>
@@ -167,7 +187,7 @@
 </section>
 
 <section class="quote" data-aurora data-tone="dark">
-  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/accueil-citation-clairiere-9x16.webp"><img src="assets/img/grok/accueil-citation-clairiere-16x9-1280.webp" srcset="assets/img/grok/accueil-citation-clairiere-16x9-1280.webp 1280w, assets/img/grok/accueil-citation-clairiere-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="lazy" decoding="async" data-grok="accueil-citation-clairiere-16x9"></picture></div>
+  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/accueil-citation-clairiere-9x16-720.webp 720w, assets/img/grok/accueil-citation-clairiere-9x16.webp 1080w" sizes="100vw"><img src="assets/img/grok/accueil-citation-clairiere-16x9-1280.webp" srcset="assets/img/grok/accueil-citation-clairiere-16x9-1280.webp 1280w, assets/img/grok/accueil-citation-clairiere-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="lazy" decoding="async" data-grok="accueil-citation-clairiere-16x9"></picture></div>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap"><figure style="margin:0"><blockquote data-quote>Vivre avec un Husky Sibérien, c'est partager son quotidien avec un être d'exception.</blockquote><figcaption class="label">La Maison des p'tits loups</figcaption></figure></div>
 </section>
@@ -195,14 +215,14 @@
     <div class="stack" style="--gap:28px">
       <p class="label eyebrow label--aurora">Nous rendre visite</p>
       <h2 class="cta__title" data-split>Venez rencontrer <em>nos loups</em></h2>
-      <p class="lead">N'hésitez pas à nous contacter pour toute question, ou pour nous parler d'un chien en particulier. Bonne visite et à très bientôt !</p>
+      <p class="lead">N'hésitez pas à nous contacter pour toute question, ou pour nous parler d'un chien en particulier. Bonne visite et à très bientôt !</p>
       <div class="row"><a class="btn" data-magnetic href="contact.html#ecrire">Nous écrire<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a><a class="btn btn--ghost" data-magnetic href="tel:+33785206730"><svg aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg>Appeler</a></div>
     </div>
     <div class="cta__contacts">
   <span class="label">Téléphone</span>
-  <div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
+  <div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30" aria-label="Copier le numéro de téléphone"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
   <span class="label" style="margin-top:14px">E-mail</span>
-  <div class="row"><a class="big-contact big-contact--mail" href="mailto:delamaisondesptitsloups@hotmail.com">delamaisondesptitsloups<wbr>@hotmail.com</a><button class="copy" type="button" data-copy="delamaisondesptitsloups@hotmail.com"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
+  <div class="row"><a class="big-contact big-contact--mail" href="mailto:delamaisondesptitsloups@hotmail.com">delamaisondesptitsloups<wbr>@hotmail.com</a><button class="copy" type="button" data-copy="delamaisondesptitsloups@hotmail.com" aria-label="Copier l'adresse e-mail"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
   <span class="label" style="margin-top:14px">Adresse</span>
   <p>1 rue de la Croix Poquet, 91650 Breuillet</p>
 </div>

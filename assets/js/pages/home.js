@@ -21,20 +21,23 @@ export default async function home(core) {
   });
   const track = $('[data-pack-track]');
   track.innerHTML = CHIENS.map((c) => dogCard(c, { href: `chiens.html#${c.id}` })).join('');
-  core.bind(document);
+  $$('[data-dog-count]').forEach((el) => { el.textContent = CHIENS.length; el.dataset.count = CHIENS.length; });
+  $('[data-pack-count]').textContent = `01 / ${String(CHIENS.length).padStart(2, '0')}`;
 
+  // l'épinglage doit exister avant les autres déclencheurs (sinon ils se calculent trop tôt)
   if (!calm) {
-    pack(track);
+    pack(track, core);
     mosaic();
     quote();
   } else {
     track.style.overflowX = 'auto';
   }
+  core.bind(document);
   return () => intro(core);
 }
 
 /* La meute défile à l'horizontale, le fond prend la teinte du chien affiché */
-function pack(track) {
+function pack(track, core) {
   const section = $('[data-pack]');
   const count = $('[data-pack-count]'), bar = $('[data-pack-progress]');
   const cards = $$('.dog', track);
@@ -55,7 +58,19 @@ function pack(track) {
       },
     });
     cards.forEach((c, i) => gsap.from($('.dog__meta', c), { y: 30, opacity: 0, duration: 0.8, ease: 'expo.out', scrollTrigger: { trigger: c, containerAnimation: tween, start: 'left 85%', once: true } }));
-    return () => { section.style.backgroundColor = ''; };
+    // clavier : la carte qui reçoit le focus est amenée à l'écran
+    const onFocus = (e) => {
+      const card = e.target.closest('.dog');
+      const st = tween.scrollTrigger;
+      if (!card || !st) return;
+      const d = dist();
+      const p = d ? Math.min(1, Math.max(0, (card.offsetLeft - window.innerWidth * 0.3) / d)) : 0;
+      window.scrollTo(0, st.start + (st.end - st.start) * p);
+      core.lenis?.scrollTo(window.scrollY, { immediate: true });
+      requestAnimationFrame(() => { section.scrollLeft = 0; });
+    };
+    track.addEventListener('focusin', onFocus);
+    return () => { section.style.backgroundColor = ''; track.removeEventListener('focusin', onFocus); };
   });
   mm.add('(max-width: 900px)', () => {
     track.style.overflowX = 'auto'; track.style.scrollSnapType = 'x mandatory';
@@ -68,7 +83,11 @@ function pack(track) {
       gsap.set(bar, { scaleX: p });
     };
     track.addEventListener('scroll', onS, { passive: true });
-    return () => track.removeEventListener('scroll', onS);
+    return () => {
+      track.removeEventListener('scroll', onS);
+      track.style.overflowX = ''; track.style.scrollSnapType = ''; track.scrollLeft = 0;
+      cards.forEach((c) => { c.style.scrollSnapAlign = ''; });
+    };
   });
 }
 
@@ -94,9 +113,11 @@ function quote() {
 /* Ouverture : deux yeux bleus s'allument dans la nuit, clignent, puis la scène apparaît depuis le regard */
 function intro(core) {
   const el = $('[data-intro]');
-  const skip = core.calm || core.fromTransition || store.sget('ptits-loups-intro') === '1' || !el;
+  const html = document.documentElement;
+  const skip = core.calm || core.fromTransition || !html.classList.contains('play-intro') || !el;
   if (skip) {
     el?.remove();
+    html.classList.remove('play-intro');
     core.curtainOut().then(() => core.heroIn());
     return;
   }
@@ -118,7 +139,7 @@ function intro(core) {
   const setMask = () => { const m = `radial-gradient(circle at ${mx}px ${my}px, transparent ${st.r}px, #000 ${st.r + 140}px)`; el.style.webkitMaskImage = m; el.style.maskImage = m; };
   let heroStarted = false;
   const startHero = () => { if (heroStarted) return; heroStarted = true; core.heroIn(); };
-  const tl = gsap.timeline({ onComplete: () => { el.remove(); core.lenis?.start(); startHero(); } });
+  const tl = gsap.timeline({ onComplete: () => { el.remove(); html.classList.remove('play-intro'); core.lenis?.start(); startHero(); } });
   tl.to(eyes, { opacity: 1, duration: 0.55, stagger: 0.07, ease: 'power2.out' }, 0.2)
     .to(eyes, { scaleY: 0.06, duration: 0.09, yoyo: true, repeat: 1, ease: 'power1.inOut' }, 0.95)
     .to(eyes, { scale: 1.35, duration: 0.5, ease: 'power2.out' }, 1.15)

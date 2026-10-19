@@ -11,14 +11,35 @@
 <meta property="og:description" content="Le parcours d'adoption d'un chiot Husky Sibérien, étape par étape.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="assets/img/ui/partage.jpg">
+<meta property="og:image" content="https://maison-ptits-loups-maquette.vercel.app/assets/img/ui/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/ui/favicon-48.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/ui/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="assets/fonts/intertight-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/intertight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
-<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');var v=null;try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}if(v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('is-calm')</script>
+<link rel="modulepreload" href="assets/js/main.js">
+<link rel="modulepreload" href="assets/js/pages/adopter.js">
+<link rel="modulepreload" href="assets/js/core.js">
+<link rel="modulepreload" href="assets/js/data.js">
+<link rel="modulepreload" href="assets/js/fx/paws.js">
+<link rel="modulepreload" href="assets/js/render.js">
+<link rel="modulepreload" href="assets/js/pages/forms.js">
+<link rel="modulepreload" href="assets/vendor/lenis/lenis.js">
+<link rel="modulepreload" href="assets/js/fx/snow.js">
+<link rel="modulepreload" href="assets/js/fx/frost.js">
+<link rel="modulepreload" href="assets/js/fx/crystal.js">
+<link rel="modulepreload" href="assets/js/fx/moon.js">
+<link rel="modulepreload" href="assets/vendor/lenis/animate.js">
+<link rel="modulepreload" href="assets/vendor/lenis/dimensions.js">
+<link rel="modulepreload" href="assets/vendor/lenis/emitter.js">
+<link rel="modulepreload" href="assets/vendor/lenis/maths.js">
+<link rel="modulepreload" href="assets/vendor/lenis/virtual-scroll.js">
+<link rel="modulepreload" href="assets/vendor/lenis/debounce.js">
+<script>(function(){var d=document.documentElement,v=null,ss=null;d.classList.remove('no-js');d.classList.add('js');try{v=localStorage.getItem('ptits-loups-calme')}catch(e){}try{ss=sessionStorage}catch(e){}var calm=v==='1'||(v!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches);if(calm){d.classList.add('is-calm');return}var tr=false;try{tr=!!ss&&ss.getItem('ptits-loups-transition')==='1'}catch(e){}if(tr)d.classList.add('from-transition');else if(false){var seen=false;try{seen=!!ss&&ss.getItem('ptits-loups-intro')==='1'}catch(e){}if(!seen)d.classList.add('play-intro')}})();</script>
 </head>
 <body data-page="adopter">
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -52,7 +73,7 @@
     </div>
   </div>
 </header>
-<div class="menu" id="menu" data-menu aria-hidden="true">
+<div class="menu" id="menu" data-menu aria-hidden="true" data-lenis-prevent>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap">
     <nav class="menu__links" aria-label="Menu"><a href="index.html">Accueil</a><a href="chiens.html">Nos chiens</a><a href="portees.html">Portées & chiots</a><a href="adopter.html" aria-current="page">Adopter</a><a href="contact.html">Contact</a></nav>
@@ -61,12 +82,12 @@
 </div>
 <main id="contenu">
 <section class="phero" data-aurora data-tone="dark" aria-labelledby="titre-adopter">
-  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/adopter-ouverture-traces-9x16.webp"><img src="assets/img/grok/adopter-ouverture-traces-16x9-1280.webp" srcset="assets/img/grok/adopter-ouverture-traces-16x9-1280.webp 1280w, assets/img/grok/adopter-ouverture-traces-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="adopter-ouverture-traces-16x9"></picture></div>
+  <div class="bg" data-parallax-bg><picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/img/grok/adopter-ouverture-traces-9x16-720.webp 720w, assets/img/grok/adopter-ouverture-traces-9x16.webp 1080w" sizes="100vw"><img src="assets/img/grok/adopter-ouverture-traces-16x9-1280.webp" srcset="assets/img/grok/adopter-ouverture-traces-16x9-1280.webp 1280w, assets/img/grok/adopter-ouverture-traces-16x9.webp 1920w" sizes="100vw" width="1920" height="1289" alt="" loading="eager" fetchpriority="high" decoding="async" data-grok="adopter-ouverture-traces-16x9"></picture></div>
   <div class="aurora-slot" data-aurora-slot></div>
   <div class="wrap"><div class="phero__grid">
     <div class="phero__text">
       <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Adopter</span></nav>
-      <h1 class="phero__title" id="titre-adopter" data-hero-title><span class="line">Adopter</span><span class="line">un <em>p'tit loup</em></span></h1>
+      <h1 class="phero__title" id="titre-adopter" data-hero-title><span class="line">Adopter</span> <span class="line">un <em>p'tit loup</em></span></h1>
       <p class="lead" data-hero-fade>Nous accompagnons chaque future famille avant, pendant et après l'adoption. Voici comment se passe une adoption chez nous, étape par étape.</p>
       <div class="row" data-hero-fade><a class="btn" data-magnetic href="#candidature">Déposer une candidature<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a><a class="btn btn--ghost" data-magnetic href="#parcours">Voir les étapes</a></div>
     </div>
@@ -80,11 +101,11 @@
     <div class="section-head">
       <p class="label eyebrow">Le parcours d'adoption</p>
       <h2 class="h2" data-split>Sept étapes, <em>pas à pas</em></h2>
-      <p class="lead">Suivez les traces : de votre premier message jusqu'à la vie à la maison.</p>
+      <p class="lead">Suivez les traces : de votre premier message jusqu'à la vie à la maison.</p>
     </div>
     <div class="steps"><article class="step" data-step>
   <figure class="step__media media media--arch" data-frost data-frost-mode="soft"><img src="assets/img/photos/jeune-chien-chaise-1280.webp" srcset="assets/img/photos/jeune-chien-chaise-640.webp 640w, assets/img/photos/jeune-chien-chaise-1280.webp 1280w, assets/img/photos/jeune-chien-chaise-1920.webp 1920w" sizes="(max-width: 900px) 84vw, 36vw" width="565" height="413" alt="Jeune chien couché sous une chaise, à la maison" loading="lazy" decoding="async"></figure>
-  <div class="step__body" data-reveal><span class="step__dot" data-step-dot></span><span class="step__num">1</span><h3>Premier contact</h3><p>Par téléphone, par e-mail ou sur nos réseaux : parlez-nous de votre projet, de votre quotidien et de vos questions.</p><span class="step__tag">Sans engagement</span></div>
+  <div class="step__body" data-reveal><span class="step__dot" data-step-dot></span><span class="step__num">1</span><h3>Premier contact</h3><p>Par téléphone, par e-mail ou sur nos réseaux : parlez-nous de votre projet, de votre quotidien et de vos questions.</p><span class="step__tag">Sans engagement</span></div>
 </article><article class="step" data-step>
   <figure class="step__media media media--arch" data-frost data-frost-mode="soft"><img src="assets/img/photos/duo-herbe-1280.webp" srcset="assets/img/photos/duo-herbe-640.webp 640w, assets/img/photos/duo-herbe-1280.webp 1280w, assets/img/photos/duo-herbe-1920.webp 1920w" sizes="(max-width: 900px) 84vw, 36vw" width="799" height="360" alt="Deux jeunes chiens couchés dans l'herbe" loading="lazy" decoding="async"></figure>
   <div class="step__body" data-reveal><span class="step__dot" data-step-dot></span><span class="step__num">2</span><h3>La rencontre</h3><p>Faites connaissance avec nos chiens et avec les parents de la portée. C'est le meilleur moyen de découvrir le caractère du Husky Sibérien.</p><span class="step__tag">Modalités de visite à compléter</span></div>
@@ -111,12 +132,12 @@
   <div class="wrap quiz-grid">
     <div class="stack" style="--gap:22px">
       <p class="label eyebrow">Avant de vous lancer</p>
-      <h2 class="h2" data-split>Un husky est-il fait <em>pour vous ?</em></h2>
+      <h2 class="h2" data-split>Un husky est‑il fait <em>pour vous ?</em></h2>
       <p class="lead">Cinq questions pour faire le point. Le Husky Sibérien est un chien d'exception, qui demande du temps et de l'espace.</p>
       <p class="todo" style="width:fit-content">Questions proposées, à valider par l'éleveuse</p>
       <figure class="media media--arch" data-frost data-frost-mode="soft"><img src="assets/img/photos/volverine-chiot-net-1280.webp" srcset="assets/img/photos/volverine-chiot-net-640.webp 640w, assets/img/photos/volverine-chiot-net-1280.webp 1280w, assets/img/photos/volverine-chiot-net-1920.webp 1920w" sizes="(max-width: 900px) 80vw, 34vw" width="2000" height="1093" alt="Volverine chiot, roux et blanc, assis sur un rocher" loading="lazy" decoding="async" style="object-position:56% 50%"></figure>
     </div>
-    <div class="quiz" data-quiz><div class="quiz__q" data-q><p>Avez-vous du temps chaque jour pour de longues sorties et des activités ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__q" data-q><p>Votre jardin est-il entièrement clos, avec des clôtures hautes et sans passage ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__q" data-q><p>Êtes-vous prêt à brosser votre chien pendant les périodes de mue ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__q" data-q><p>Votre chien pourra-t-il rester rarement seul toute la journée ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__q" data-q><p>Avez-vous prévu le budget pour la nourriture, les soins et le vétérinaire ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__result" data-quiz-result aria-live="polite"><div class="quiz__meter"><i data-quiz-meter></i></div><b data-quiz-title>Répondez aux cinq questions</b><p data-quiz-text>Votre bilan s'affiche ici, au fil de vos réponses.</p></div></div>
+    <div class="quiz" data-quiz><div class="quiz__q" data-q><p>Avez-vous du temps chaque jour pour de longues sorties et des activités ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__q" data-q><p>Votre jardin est-il entièrement clos, avec des clôtures hautes et sans passage ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__q" data-q><p>Êtes-vous prêt à brosser votre chien pendant les périodes de mue ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__q" data-q><p>Votre chien sera-t-il rarement seul pendant de longues heures ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__q" data-q><p>Avez-vous prévu le budget pour la nourriture, les soins et le vétérinaire ?</p><div class="quiz__yn" role="group" aria-label="Réponse"><button type="button" aria-pressed="false" data-a="1">Oui</button><button type="button" aria-pressed="false" data-a="0">Pas encore</button></div></div><div class="quiz__result" data-quiz-result aria-live="polite"><div class="quiz__meter"><i data-quiz-meter></i></div><b data-quiz-title>Répondez aux cinq questions</b><p data-quiz-text>Votre bilan s'affiche ici, au fil de vos réponses.</p></div></div>
   </div>
 </section>
 
@@ -141,8 +162,8 @@
         <div class="form">
           <div class="field"><label for="w-portee">Portée qui vous intéresse</label><select id="w-portee" name="portee" data-litter-select></select></div>
           <fieldset class="field choices"><legend>Sexe souhaité</legend><label class="choice"><input type="radio" name="sexe" value="Femelle"><span>Femelle</span></label><label class="choice"><input type="radio" name="sexe" value="Mâle"><span>Mâle</span></label><label class="choice"><input type="radio" name="sexe" value="Sans préférence" checked><span>Sans préférence</span></label></fieldset>
-          <fieldset class="field choices"><legend>Est-ce votre premier chien ?</legend><label class="choice"><input type="radio" name="premier" value="Oui"><span>Oui</span></label><label class="choice"><input type="radio" name="premier" value="Non" checked><span>Non</span></label></fieldset>
-          <p class="hint-box" data-first-dog hidden>Bienvenue ! Nous prendrons le temps de vous présenter les besoins du Husky Sibérien. Comme pour toute adoption, vous signerez un certificat d'engagement et de connaissance au moins 7 jours avant l'arrivée du chiot.</p>
+          <fieldset class="field choices"><legend>Est-ce votre premier chien ?</legend><label class="choice"><input type="radio" name="premier" value="Oui"><span>Oui</span></label><label class="choice"><input type="radio" name="premier" value="Non" checked><span>Non</span></label></fieldset>
+          <p class="hint-box" data-first-dog hidden>Bienvenue ! Nous prendrons le temps de vous présenter les besoins du Husky Sibérien. Comme pour toute adoption, vous signerez un certificat d'engagement et de connaissance au moins 7 jours avant l'arrivée du chiot.</p>
         </div>
       </fieldset>
       <fieldset data-wstep="2" hidden>
@@ -157,12 +178,12 @@
         <legend class="sr-only">Envoi</legend>
         <div class="stack" style="--gap:22px">
           <dl class="recap" data-recap></dl>
-          <label class="check"><input type="checkbox" id="w-rgpd" required><span>J'accepte que mes informations soient utilisées pour répondre à ma demande. Voir les <a class="link link--always" href="mentions-legales.html#donnees">mentions légales</a>.</span></label>
-          <span class="field__err" data-err-rgpd></span>
-          <p class="form__demo">Maquette de démonstration : aucune information n'est envoyée.</p>
+          <label class="check"><input type="checkbox" id="w-rgpd" required aria-describedby="w-rgpd-err"><span>J'accepte que mes informations soient utilisées pour répondre à ma demande. Voir les <a class="link link--always" href="mentions-legales.html#donnees">mentions légales</a>.</span></label>
+          <span class="field__err" id="w-rgpd-err" role="alert" data-err-rgpd></span>
+          <p class="form__demo">Maquette de démonstration : aucune information n'est envoyée.</p>
         </div>
       </fieldset>
-      <div class="success" data-wizard-success hidden tabindex="-1"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg><h3 class="h3">Merci, votre candidature est prête</h3><p>Dans le site final, elle sera envoyée à l'élevage, qui vous répondra rapidement. Ici, c'est une démonstration : rien n'a été envoyé.</p><button class="btn btn--ghost btn--small" type="button" data-wizard-reset>Recommencer</button></div>
+      <div class="success" data-wizard-success hidden tabindex="-1"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg><h3 class="h3">Merci, votre candidature est prête</h3><p>Dans le site final, elle sera envoyée à l'élevage, qui vous répondra rapidement. Ici, c'est une démonstration : rien n'a été envoyé.</p><button class="btn btn--ghost btn--small" type="button" data-wizard-reset>Recommencer</button></div>
       <div class="wizard__nav" data-wizard-nav><button class="btn btn--ghost btn--small" type="button" data-prev hidden>Retour</button><button class="btn btn--small" type="button" data-next style="margin-left:auto">Continuer<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button><button class="btn btn--small" type="submit" data-submit hidden style="margin-left:auto">Envoyer ma candidature<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button></div>
     </form>
   </div>
@@ -171,7 +192,7 @@
 <section class="section" id="faq" data-tone="dark">
   <div class="wrap" style="max-width:1080px">
     <div class="section-head"><p class="label eyebrow">Questions fréquentes</p><h2 class="h2" data-split>Vos <em>questions</em></h2></div>
-    <div class="faq"><details data-reveal><summary>Quel est le prix d'un chiot ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Pour la portée de Yarna et Volverine, le prix annoncé est de <strong>1 100 €</strong>. Les prix des prochaines portées seront indiqués sur leur fiche.</p></div></details><details data-reveal><summary>Les chiots sont-ils inscrits au LOF ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Oui : tous nos chiots sont inscrits au Livre des Origines Français.</p></div></details><details data-reveal><summary>À quel âge les chiots partent-ils ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Jamais avant 8 semaines, comme le prévoit la loi. Pour la portée de Yarna et Volverine, les départs sont possibles à partir du 7 novembre.</p></div></details><details data-reveal><summary>Qu'est-ce que le certificat d'engagement ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>C'est un document que toute personne qui acquiert un chien doit signer. Il présente les besoins du chien et vos obligations. Il doit être signé au moins 7 jours avant l'arrivée du chiot.</p></div></details><details data-reveal><summary>Quels documents sont remis avec le chiot ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Attestation de cession, certificat vétérinaire, document d'information et carte d'identification. <span class="todo">Liste complète à confirmer</span></p></div></details><details data-reveal><summary>Peut-on venir voir les chiens ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Contactez-nous pour en parler. <span class="todo">Modalités de visite à compléter</span></p></div></details></div>
+    <div class="faq"><details data-reveal><summary>Quel est le prix d'un chiot ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Pour la portée de Yarna et Volverine, le prix annoncé est de <strong data-faq-prix="yarna-volverine">1 100 €</strong>. Les prix des prochaines portées seront indiqués sur leur fiche.</p></div></details><details data-reveal><summary>Les chiots sont-ils inscrits au LOF ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Oui : tous nos chiots sont inscrits au Livre des Origines Français.</p></div></details><details data-reveal><summary>À quel âge les chiots partent-ils ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Jamais avant 8 semaines, comme le prévoit la loi. Pour la portée de Yarna et Volverine, les départs sont possibles à partir du <span data-faq-depart="yarna-volverine">7 novembre</span>.</p></div></details><details data-reveal><summary>Qu'est-ce que le certificat d'engagement ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>C'est un document que toute personne qui acquiert un chien doit signer. Il présente les besoins du chien et vos obligations. Il doit être signé au moins 7 jours avant l'arrivée du chiot.</p></div></details><details data-reveal><summary>Quels documents sont remis avec le chiot ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Attestation de cession, certificat vétérinaire, document d'information et carte d'identification. <span class="todo">Liste complète à confirmer</span></p></div></details><details data-reveal><summary>Peut-on venir voir les chiens ?<i aria-hidden="true"></i></summary><div class="faq__a"><p>Contactez-nous pour en parler. <span class="todo">Modalités de visite à compléter</span></p></div></details></div>
   </div>
 </section>
 
@@ -181,15 +202,15 @@
   <div class="wrap cta__grid">
     <div class="stack" style="--gap:28px">
       <p class="label eyebrow label--aurora">Nous rendre visite</p>
-      <h2 class="cta__title" data-split>Une question <em>avant de vous lancer ?</em></h2>
-      <p class="lead">Appelez-nous ou écrivez-nous : nous prenons le temps de répondre à chaque famille.</p>
+      <h2 class="cta__title" data-split>Une question <em>avant de vous lancer ?</em></h2>
+      <p class="lead">Appelez-nous ou écrivez-nous : nous prenons le temps de répondre à chaque famille.</p>
       <div class="row"><a class="btn" data-magnetic href="contact.html#ecrire">Nous écrire<svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a><a class="btn btn--ghost" data-magnetic href="tel:+33785206730"><svg aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg>Appeler</a></div>
     </div>
     <div class="cta__contacts">
   <span class="label">Téléphone</span>
-  <div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
+  <div class="row"><a class="big-contact" href="tel:+33785206730">07 85 20 67 30</a><button class="copy" type="button" data-copy="07 85 20 67 30" aria-label="Copier le numéro de téléphone"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
   <span class="label" style="margin-top:14px">E-mail</span>
-  <div class="row"><a class="big-contact big-contact--mail" href="mailto:delamaisondesptitsloups@hotmail.com">delamaisondesptitsloups<wbr>@hotmail.com</a><button class="copy" type="button" data-copy="delamaisondesptitsloups@hotmail.com"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
+  <div class="row"><a class="big-contact big-contact--mail" href="mailto:delamaisondesptitsloups@hotmail.com">delamaisondesptitsloups<wbr>@hotmail.com</a><button class="copy" type="button" data-copy="delamaisondesptitsloups@hotmail.com" aria-label="Copier l'adresse e-mail"><svg aria-hidden="true" focusable="false"><use href="#i-copy"></use></svg>Copier</button></div>
   <span class="label" style="margin-top:14px">Adresse</span>
   <p>1 rue de la Croix Poquet, 91650 Breuillet</p>
 </div>
